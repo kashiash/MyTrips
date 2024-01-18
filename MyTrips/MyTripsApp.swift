@@ -11,7 +11,7 @@ import SwiftUI
 struct MyTripsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            StartTab()
         }
     }
 }
