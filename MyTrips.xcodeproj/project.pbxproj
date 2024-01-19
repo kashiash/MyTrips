@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7632C9972B5AD3C800647B35 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7632C9962B5AD3C800647B35 /* Destination.swift */; };
+		7632C9992B5AD64300647B35 /* MTPlacemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7632C9982B5AD64300647B35 /* MTPlacemark.swift */; };
 		76D3A37D2B5952C500CBCAE7 /* MyTripsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3A37C2B5952C500CBCAE7 /* MyTripsApp.swift */; };
 		76D3A37F2B5952C500CBCAE7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3A37E2B5952C500CBCAE7 /* ContentView.swift */; };
 		76D3A3812B5952C800CBCAE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76D3A3802B5952C800CBCAE7 /* Assets.xcassets */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7632C9962B5AD3C800647B35 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
+		7632C9982B5AD64300647B35 /* MTPlacemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTPlacemark.swift; sourceTree = "<group>"; };
 		76D3A3792B5952C500CBCAE7 /* MyTrips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTrips.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76D3A37C2B5952C500CBCAE7 /* MyTripsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTripsApp.swift; sourceTree = "<group>"; };
 		76D3A37E2B5952C500CBCAE7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -41,6 +45,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7632C9952B5AD3B900647B35 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7632C9962B5AD3C800647B35 /* Destination.swift */,
+				7632C9982B5AD64300647B35 /* MTPlacemark.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		76D3A3702B5952C500CBCAE7 = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +73,7 @@
 		76D3A37B2B5952C500CBCAE7 /* MyTrips */ = {
 			isa = PBXGroup;
 			children = (
+				7632C9952B5AD3B900647B35 /* Models */,
 				76D3A3922B5955AB00CBCAE7 /* DestinationsTab */,
 				76D3A3912B59559F00CBCAE7 /* MyTripTab */,
 				76D3A37C2B5952C500CBCAE7 /* MyTripsApp.swift */,
@@ -172,7 +186,9 @@
 				76D3A38E2B5953D700CBCAE7 /* TripMapView.swift in Sources */,
 				76D3A38C2B5952E500CBCAE7 /* StartTab.swift in Sources */,
 				76D3A37F2B5952C500CBCAE7 /* ContentView.swift in Sources */,
+				7632C9992B5AD64300647B35 /* MTPlacemark.swift in Sources */,
 				76D3A37D2B5952C500CBCAE7 /* MyTripsApp.swift in Sources */,
+				7632C9972B5AD3C800647B35 /* Destination.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
