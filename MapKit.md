@@ -823,13 +823,42 @@ Będziemy jednak musieli przekazać kontekst modelu do tej konkretnej funkcji, a
 
 Teraz, zanim zacznę od głównego tematu dzisiejszego filmu, chcę wprowadzić kilka drobnych zmian, które poprawią wrażenia użytkownika. 
 
-Gdy dodajemy nowe miejsce docelowe, stukamy w pole tekstowe w widoku listy miejsc docelowych. Chcę wyłączyć automatyczną korektę i mogę to zrobić za pomocą jednego modyfikatora widoku, którym jest Auto-Correction Disabled. 
+Gdy dodajemy nowe miejsce docelowe, wybieramy pole tekstowe w widoku`DestinationsListView`. Chcę wyłączyć automatyczną korektę i mogę to zrobić za pomocą jednego modyfikatora widoku, którym jest Auto-Correction Disabled. 
 
-Następnie w akcji przycisków OK chcę przyciąć wszelkie puste białe spacje przed lub po. Wszystko, co muszę zrobić, to podać nazwę miejsca docelowego, w którym przycinamy znaki w białych spacjach i nowych wierszach. Jeśli otworzę teraz widok mapy Lokalizacje docelowe, chcę wyłączyć automatyczną korektę w polu wyszukiwania, a także wyłączyć automatyczną kapitalizację. Tak więc w polu tekstowym, po ustawieniu stylu, ustawię wyłączoną autokorektę, a następnie ustawię automatyczną kapitalizację tekstu na Nigdy. 
+```swift
+TextField("Enter destination name", text: $destinationName)
+.autocorrectionDisabled()
+```
+
+Następnie w akcji przycisków OK chcę przyciąć wszelkie puste białe spacje przed lub po. Wszystko, co muszę zrobić, to podać nazwę miejsca docelowego, w którym przycinamy znaki w białych spacjach i nowych wierszach.
+
+```swift
+let destination = Destination(name: destinationName
+                              .trimmingCharacters(in: .whitespacesAndNewlines))
+```
+
+ Jeśli otworzę teraz widok `DestinationLocationsMapView`, chcę wyłączyć automatyczną korektę w polu wyszukiwania, a także wyłączyć automatyczną kapitalizację. Tak więc w polu tekstowym, po ustawieniu stylu, ustawię wyłączoną autokorektę, a następnie ustawię automatyczną kapitalizację tekstu na Nigdy. 
+
+```swift
+TextField("Search...", text: $searchText)
+.textFieldStyle(.roundedBorder)
+.autocorrectionDisabled()
+.textInputAutocapitalization(.never)
+```
 
 Następnie użyjemy tych modyfikatorów w następnym widoku, który również chcę utworzyć. Najpierw jednak potrzebuję sposobu, aby wybrać znacznik i wiedzieć, do którego znacznika pustego miejsca się odnosi. 
 
-Ale jest jeszcze jedna rzecz, którą chcę naprawić. Po przeprowadzeniu wyszukiwania na ekranie chcemy, aby widoczny obszar był skupiony wokół wyników wyszukiwania. W funkcji On Submit, po ustawieniu tekstu wyszukiwania z powrotem na pusty ciąg znaków, ustaw pozycję kamery na Automatic. Po wybraniu znacznika chcemy przechowywać powiązany znacznik miejsca we właściwości stanu, która uruchomi arkusz modalny, aby wyświetlić więcej informacji o tym znaczniku. 
+Ale jest jeszcze jedna rzecz, którą chcę naprawić. Po przeprowadzeniu wyszukiwania na ekranie chcemy, aby widoczny obszar był skupiony wokół wyników wyszukiwania a jednoczesnie wszystkie punkty byly na nim widoczne. W funkcji On Submit, po ustawieniu tekstu wyszukiwania z powrotem na pusty ciąg znaków, ustaw pozycję kamery na Automatic. 
+
+```swift
+Task{
+  await MapManager.searchPlaces(modelContext,searchText: searchText, visibleRegion: visibleRegion)
+  searchText = ""
+  cameraPosition = .automatic
+}
+```
+
+Po wybraniu znacznika chcemy przechowywać powiązany znacznik miejsca we właściwości stanu, która uruchomi arkusz modalny, aby wyświetlić więcej informacji o tym znaczniku. 
 
 Utworzymy właściwość stanu o nazwie `SelectedPlaceMark` i będzie to opcjonalny pusty znacznik miejsca, ponieważ żaden nie zostanie wybrany podczas ładowania widoku. Następnie możemy dodać argument wyboru do naszego widoku mapy, który jest powiązany z tą nową właściwością stanu. Ale kiedy dotkniemy jednego z naszych znaczników, chcemy, aby ten wybór został ustawiony na odpowiadający mu pusty znacznik miejsca. 
 

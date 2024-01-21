@@ -27,8 +27,12 @@ enum MapManager {
                 name: $0.placemark.name ?? "",
                 address: $0.placemark.title ?? "",
                 latitude: $0.placemark.coordinate.latitude, 
-                longitude: $0.placemark.coordinate.longitude
+                longitude: $0.placemark.coordinate.longitude,
+                description: "\($0.pointOfInterestCategory)",
+                country: $0.placemark.country ?? "",
+                countryISOCode: $0.placemark.isoCountryCode ?? ""
             )
+            let test =   $0.placemark.description
             modelContext.insert(placemark)
         }
     }
