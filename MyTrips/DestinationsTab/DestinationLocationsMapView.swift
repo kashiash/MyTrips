@@ -26,6 +26,7 @@ struct DestinationLocationsMapView: View {
     }
     @State private var selectedPlacemark: MTPlacemark?
     @State private var selectedCategory: String = ""
+    @State private var isManualMarker = false
 
     var body: some View {
         @Bindable var destination = destination
@@ -56,8 +57,19 @@ struct DestinationLocationsMapView: View {
             }
         }
         .padding(.horizontal)
+        MapReader{ proxy in
         Map(position: $cameraPosition, selection: $selectedPlacemark) {
-                ForEach(listPlacemarks) {placemark in
+            ForEach(listPlacemarks) {placemark in
+                if isManualMarker {
+                    if placemark.destination != nil {
+                        Marker(coordinate: placemark.coordinate) {
+                            Label(placemark.name,systemImage: "star")
+                        }
+                        .tint(.yellow)
+                    } else {
+                        Marker(placemark.name,coordinate: placemark.coordinate)
+                    }
+                } else  {
                     Group {
                         if placemark.destination != nil {
                             Marker(coordinate: placemark.coordinate) {
@@ -70,6 +82,7 @@ struct DestinationLocationsMapView: View {
                     }
                     .tag(placemark)
                 }
+            }
 
         }
         .overlay(alignment: .leading) {
@@ -97,57 +110,81 @@ struct DestinationLocationsMapView: View {
             MapPitchToggle()
             //MapZoomStepper()
         }
-        .onChange(of: cameraPosition) {
-            print(cameraPosition.camera?.centerCoordinate)
-            print(cameraPosition.positionedByUser)
+        .onTapGesture { position in
+            if isManualMarker {
+                if let coordinate = proxy.convert(position, from: .local) {
+                    let mtPlacemark = MTPlacemark(name: "", address: "", latitude: coordinate.latitude, longitude: coordinate.longitude)
+                    modelContext.insert(mtPlacemark)
+                    selectedPlacemark = mtPlacemark
+                }
+            }
 
-            print(cameraPosition.camera)
-            print(cameraPosition.region)
-            print(cameraPosition.rect)
         }
-        .sheet(item: $selectedPlacemark) { selectedPlacemark in
+    }
+        .sheet(item: $selectedPlacemark, onDismiss: {
+            if isManualMarker {
+                MapManager.removeSearchResults(modelContext)
+            }
+        })
+        { selectedPlacemark in
             LocationDetailView( destination: destination, selectedPlacemark: selectedPlacemark)
                 .presentationDetents([.medium])
         }
         .safeAreaInset(edge: .bottom) {
-            HStack {
-                TextField("Search...", text: $searchText)
-                    .textFieldStyle(.roundedBorder)
-                    .autocorrectionDisabled()
-                    .textInputAutocapitalization(.never)
-                    .focused($searchFieldFocus)
-                    .overlay(alignment: .trailing) {
-                        if searchFieldFocus {
-                            Button {
-                                searchText = ""
-                                searchFieldFocus = false
-                            } label: {
-                                Image(systemName: "xmark.circle.fill")
+            VStack {
+                Toggle(isOn: $isManualMarker) {
+                    Label("Tap marker placement is: \(isManualMarker ? "ON" : "OFF")", systemImage: isManualMarker ? "mappin.circle" :  "mappin.slash.circle")
+                }
+                .fontWeight(.bold)
+                .toggleStyle(.button)
+                .background(.ultraThinMaterial)
+                .onChange(of: isManualMarker) {
+                    MapManager.removeSearchResults(modelContext)
+                }
+                if !isManualMarker {
+                HStack {
+                    TextField("Search...", text: $searchText)
+
+                        .textFieldStyle(.roundedBorder)
+                        .autocorrectionDisabled()
+                        .textInputAutocapitalization(.never)
+                        .focused($searchFieldFocus)
+                        .overlay(alignment: .trailing) {
+                            if searchFieldFocus {
+                                Button {
+                                    searchText = ""
+                                    searchFieldFocus = false
+                                } label: {
+                                    Image(systemName: "xmark.circle.fill")
+                                }
+                                .offset(x: -5)
                             }
-                            .offset(x: -5)
                         }
-                    }
-                    .onSubmit {
-                        Task{
-                            await MapManager.searchPlaces(modelContext,searchText: searchText, visibleRegion: visibleRegion)
-                            searchText = ""
-                            cameraPosition = .automatic
+
+                        .onSubmit {
+                            Task{
+                                await MapManager.searchPlaces(modelContext,searchText: searchText, visibleRegion: visibleRegion)
+                                searchText = ""
+                                cameraPosition = .automatic
+                            }
                         }
+                    if !searchPlacemarks.isEmpty {
+                        Button {
+                            MapManager.removeSearchResults(modelContext)
+                        } label: {
+                            Image(systemName: "mappin.slash.circle.fill")
+                                .imageScale(.large)
+                        }
+                        .foregroundStyle(.white)
+                        .padding(8)
+                        .background(.red)
+                        .clipShape(.circle)
                     }
-                if !searchPlacemarks.isEmpty {
-                    Button {
-                        MapManager.removeSearchResults(modelContext)
-                    } label: {
-                        Image(systemName: "mappin.slash.circle.fill")
-                            .imageScale(.large)
-                    }
-                    .foregroundStyle(.white)
-                    .padding(8)
-                    .background(.red)
-                    .clipShape(.circle)
+                }
+
+                .padding(.horizontal)
                 }
             }
-            .padding()
         }
       //  .navigationTitle("Destination")
      //   .navigationBarTitleDisplayMode(.inline)

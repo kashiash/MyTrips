@@ -27,34 +27,38 @@ struct LocationDetailView: View {
     var body: some View {
         VStack{
             HStack{
-                VStack{
+                VStack {
                     TextField("Name",text: $name)
                         .font(.title)
                     TextField("Address",text: $address, axis: .vertical)
                     TextField("Description",text: $description, axis: .horizontal)
-                }
-                .textFieldStyle(.roundedBorder)
-                if isChanged {
-                    Button("Update") {
-                        selectedPlacemark?.name = name
-                            .trimmingCharacters(in: .whitespacesAndNewlines)
-                        selectedPlacemark?.address = address
-                            .trimmingCharacters(in: .whitespacesAndNewlines)
-                        selectedPlacemark?.placemarkDescription = description
-                            .trimmingCharacters(in: .whitespacesAndNewlines)
-                        dismiss()
+
+
+                    if isChanged {
+                        Button("Update") {
+                            selectedPlacemark?.name = name
+                                .trimmingCharacters(in: .whitespacesAndNewlines)
+                            selectedPlacemark?.address = address
+                                .trimmingCharacters(in: .whitespacesAndNewlines)
+                            selectedPlacemark?.placemarkDescription = description
+                                .trimmingCharacters(in: .whitespacesAndNewlines)
+                            //   dismiss()
+                        }
+                        .frame(maxWidth: .infinity,alignment: .trailing)
+                        .buttonStyle(.borderedProminent)
                     }
-                    .frame(maxWidth: .infinity,alignment: .trailing)
-                    .buttonStyle(.borderedProminent)
                 }
-                Spacer()
-                Button{
-                    dismiss()
-                } label: {
-                    Image(systemName: "xmark.circle.fill")
-                        .imageScale(.large)
-                        .foregroundStyle(.gray)
-                }
+                        .textFieldStyle(.roundedBorder)
+                        .autocorrectionDisabled()
+                    Spacer()
+                    Button{
+                        dismiss()
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .imageScale(.large)
+                            .foregroundStyle(.gray)
+                    }
+
             }
             if let lookaroundScene {
                 LookAroundPreview(initialScene: lookaroundScene)
