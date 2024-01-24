@@ -35,10 +35,12 @@ struct DestinationLocationsMapView: View {
             LabeledContent {
                 TextField("Enter destination name", text: $destination.name)
                     .textFieldStyle(.roundedBorder)
-                    .foregroundStyle(.primary)
+                 //   .foregroundStyle(.primary)
+
             } label: {
                 Text("Name")
             }
+
             HStack{
                 Text("Adjust the map to set the region for current destination.")
                     .foregroundStyle(.secondary)
@@ -56,6 +58,7 @@ struct DestinationLocationsMapView: View {
                 .buttonStyle(.borderedProminent)
             }
         }
+        .background(.ultraThinMaterial)
         .padding(.horizontal)
         MapReader{ proxy in
         Map(position: $cameraPosition, selection: $selectedPlacemark) {
@@ -85,16 +88,18 @@ struct DestinationLocationsMapView: View {
             }
 
         }
+        .ignoresSafeArea()
         .overlay(alignment: .leading) {
             VStack {
                 Button("",systemImage:"fuelpump.circle"){
-                    selectedCategory = "gas station"
+                    selectedCategory = "gasStation"
                 }
-                .font(.largeTitle)
+
 
                 Button("",systemImage:"parkingsign.circle"){
                     selectedCategory = "parking"
                 }
+
 
             }
             .font(.largeTitle)
@@ -111,6 +116,7 @@ struct DestinationLocationsMapView: View {
             //MapZoomStepper()
         }
         .onTapGesture { position in
+            print("tap position: \(position)")
             if isManualMarker {
                 if let coordinate = proxy.convert(position, from: .local) {
                     let mtPlacemark = MTPlacemark(name: "", address: "", latitude: coordinate.latitude, longitude: coordinate.longitude)
@@ -120,6 +126,29 @@ struct DestinationLocationsMapView: View {
             }
 
         }
+
+        .gesture(LongPressGesture(
+            minimumDuration: 0.25)
+            .sequenced(before: DragGesture(
+                minimumDistance: 0,
+                coordinateSpace: .local))
+                .onEnded { value in
+                    switch value {
+                    case .second(true, let drag):
+                      let  longPressLocation = drag?.location ?? .zero
+                        print("x: \(longPressLocation.x) - y: \(longPressLocation.y)")
+
+                        if let coordinate = proxy.convert(longPressLocation, from: .local) {
+                            let mtPlacemark = MTPlacemark(name: "", address: "", latitude: coordinate.latitude, longitude: coordinate.longitude)
+                            modelContext.insert(mtPlacemark)
+                            selectedPlacemark = mtPlacemark
+                        }
+
+                    default:
+                        break
+                    }
+                })
+
     }
         .sheet(item: $selectedPlacemark, onDismiss: {
             if isManualMarker {
@@ -186,8 +215,8 @@ struct DestinationLocationsMapView: View {
                 }
             }
         }
-      //  .navigationTitle("Destination")
-     //   .navigationBarTitleDisplayMode(.inline)
+    //   .navigationTitle("Destination")
+   //    .navigationBarTitleDisplayMode(.inline)
 
         .onMapCameraChange(frequency: .onEnd) { context in
             visibleRegion = context.region
