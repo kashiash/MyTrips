@@ -215,8 +215,8 @@ struct DestinationLocationsMapView: View {
                 }
             }
         }
-    //   .navigationTitle("Destination")
-   //    .navigationBarTitleDisplayMode(.inline)
+       .navigationTitle("Destination")
+       .navigationBarTitleDisplayMode(.inline)
 
         .onMapCameraChange(frequency: .onEnd) { context in
             visibleRegion = context.region

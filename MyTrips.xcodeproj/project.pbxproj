@@ -12,6 +12,7 @@
 		7632C99B2B5BDD4500647B35 /* DestinationsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7632C99A2B5BDD4500647B35 /* DestinationsListView.swift */; };
 		7632C99E2B5C296D00647B35 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7632C99D2B5C296D00647B35 /* MapManager.swift */; };
 		7632C9A12B5D27E900647B35 /* LocationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7632C9A02B5D27E800647B35 /* LocationDetailView.swift */; };
+		764D827F2B627DEB00FA0C57 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764D827E2B627DEB00FA0C57 /* LocationManager.swift */; };
 		76D3A37D2B5952C500CBCAE7 /* MyTripsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3A37C2B5952C500CBCAE7 /* MyTripsApp.swift */; };
 		76D3A37F2B5952C500CBCAE7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3A37E2B5952C500CBCAE7 /* ContentView.swift */; };
 		76D3A3812B5952C800CBCAE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76D3A3802B5952C800CBCAE7 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		7632C99A2B5BDD4500647B35 /* DestinationsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationsListView.swift; sourceTree = "<group>"; };
 		7632C99D2B5C296D00647B35 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		7632C9A02B5D27E800647B35 /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
+		764D827E2B627DEB00FA0C57 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		76D3A3792B5952C500CBCAE7 /* MyTrips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTrips.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76D3A37C2B5952C500CBCAE7 /* MyTripsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTripsApp.swift; sourceTree = "<group>"; };
 		76D3A37E2B5952C500CBCAE7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				7632C99D2B5C296D00647B35 /* MapManager.swift */,
+				764D827E2B627DEB00FA0C57 /* LocationManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				76D3A37F2B5952C500CBCAE7 /* ContentView.swift in Sources */,
 				7632C9992B5AD64300647B35 /* MTPlacemark.swift in Sources */,
 				7632C99E2B5C296D00647B35 /* MapManager.swift in Sources */,
+				764D827F2B627DEB00FA0C57 /* LocationManager.swift in Sources */,
 				76D3A37D2B5952C500CBCAE7 /* MyTripsApp.swift in Sources */,
 				7632C99B2B5BDD4500647B35 /* DestinationsListView.swift in Sources */,
 				7632C9972B5AD3C800647B35 /* Destination.swift in Sources */,
@@ -352,6 +356,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To locate where you are";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "To record your ways";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "to record location";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -392,6 +397,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To locate where you are";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "To record your ways";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "to record location";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

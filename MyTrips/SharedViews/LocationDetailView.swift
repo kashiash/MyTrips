@@ -67,8 +67,8 @@ struct LocationDetailView: View {
             } else {
                 ContentUnavailableView {
 
-                    Image(.kozakiewicz)
-                        .frame(height: 20)
+                    Image(systemName: "mappin.slash.circle")
+                        .font(.largeTitle)
                     Text("Content unavaiable")
                         .foregroundStyle(.red)
                 }
