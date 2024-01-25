@@ -16,7 +16,7 @@ struct LocationDetailView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var name = ""
     @State private var address = ""
-    @State private var description = ""
+  //  @State private var description = ""
 
     @State private var lookaroundScene: MKLookAroundScene?
 
@@ -31,7 +31,7 @@ struct LocationDetailView: View {
                     TextField("Name",text: $name)
                         .font(.title)
                     TextField("Address",text: $address, axis: .vertical)
-                    TextField("Description",text: $description, axis: .horizontal)
+             //       TextField("Description",text: $description, axis: .horizontal)
 
 
                     if isChanged {
@@ -40,8 +40,8 @@ struct LocationDetailView: View {
                                 .trimmingCharacters(in: .whitespacesAndNewlines)
                             selectedPlacemark?.address = address
                                 .trimmingCharacters(in: .whitespacesAndNewlines)
-                            selectedPlacemark?.placemarkDescription = description
-                                .trimmingCharacters(in: .whitespacesAndNewlines)
+                      //    selectedPlacemark?.placemarkDescription = description
+                      //        .trimmingCharacters(in: .whitespacesAndNewlines)
                             //   dismiss()
                         }
                         .frame(maxWidth: .infinity,alignment: .trailing)
@@ -105,7 +105,7 @@ struct LocationDetailView: View {
             if let selectedPlacemark, destination != nil {
                 name = selectedPlacemark.name
                 address = selectedPlacemark.address
-                description = selectedPlacemark.placemarkDescription
+              //  description = selectedPlacemark.placemarkDescription
 
             }
         }

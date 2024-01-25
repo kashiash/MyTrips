@@ -5,12 +5,12 @@
 //  Created by Jacek Kosinski U on 25/01/2024.
 //
 
-import Foundation
+import SwiftUI
 import CoreLocation
 
 @Observable
 class LocationManager: NSObject, CLLocationManagerDelegate {
-    @ObservationIgnored let manager = CLLocationManager()
+  @ObservationIgnored let manager = CLLocationManager()
     var userLocation: CLLocation?
     var isAuthorized = false
 
@@ -19,6 +19,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         manager.delegate = self
         startLocationServices()
     }
+
     func startLocationServices() {
         if manager.authorizationStatus == .authorizedAlways || manager.authorizationStatus == .authorizedWhenInUse {
             manager.startUpdatingLocation()
@@ -32,22 +33,19 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         userLocation = locations.last
     }
+
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
-
+        case .authorizedAlways, .authorizedWhenInUse:
+            isAuthorized = true
+            manager.requestLocation()
         case .notDetermined:
             isAuthorized = false
             manager.requestWhenInUseAuthorization()
-        case .restricted:
-            isAuthorized = false
         case .denied:
             isAuthorized = false
             print("access denied")
-        case .authorizedAlways:
-            isAuthorized = true
-        case .authorizedWhenInUse:
-            isAuthorized = true
-        @unknown default:
+        default:
             isAuthorized = true
             startLocationServices()
         }

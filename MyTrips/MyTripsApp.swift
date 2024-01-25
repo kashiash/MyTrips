@@ -16,11 +16,12 @@ struct MyTripsApp: App {
             if locationManager.isAuthorized {
                 StartTab()
             } else {
-                Text("need to help user")
+                LocationDeniedView()
             }
 
         }
 
         .modelContainer(for: Destination.self)
+        .environment(locationManager)
     }
 }
