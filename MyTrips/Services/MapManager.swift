@@ -10,10 +10,7 @@ import SwiftData
 
 enum MapManager {
     @MainActor
-    static func searchPlaces(_ modelContext: ModelContext,
-                             searchText: String,
-                             visibleRegion:MKCoordinateRegion?
-    ) async {
+    static func searchPlaces(_ modelContext: ModelContext, searchText: String, visibleRegion: MKCoordinateRegion?) async {
         removeSearchResults(modelContext)
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = searchText
@@ -23,23 +20,30 @@ enum MapManager {
         let searchItems = try? await MKLocalSearch(request: request).start()
         let results = searchItems?.mapItems ?? []
         results.forEach {
-            let placemark = MTPlacemark(
+            let mtPlacemark = MTPlacemark(
                 name: $0.placemark.name ?? "",
                 address: $0.placemark.title ?? "",
-                latitude: $0.placemark.coordinate.latitude, 
-                longitude: $0.placemark.coordinate.longitude,
-                description: "\($0.pointOfInterestCategory)",
-                country: $0.placemark.country ?? "",
-                countryISOCode: $0.placemark.isoCountryCode ?? ""
+                latitude: $0.placemark.coordinate.latitude,
+                longitude: $0.placemark.coordinate.longitude
             )
-            let test =   $0.placemark.description
-            modelContext.insert(placemark)
+            modelContext.insert(mtPlacemark)
         }
     }
 
     static func removeSearchResults(_ modelContext: ModelContext) {
         let searchPredicate = #Predicate<MTPlacemark> { $0.destination == nil }
-        try? modelContext.delete(model: MTPlacemark.self,where: searchPredicate)
+        try? modelContext.delete(model: MTPlacemark.self, where: searchPredicate)
+    }
 
+    static func distance(meters: Double) -> String {
+        let userLocale = Locale.current
+        let formatter = MeasurementFormatter()
+        var options: MeasurementFormatter.UnitOptions = []
+        options.insert(.providedUnit)
+        options.insert(.naturalScale)
+        formatter.unitOptions = options
+        let meterValue = Measurement(value: meters, unit: UnitLength.meters)
+        let yardsValue = Measurement(value: meters, unit: UnitLength.yards)
+        return formatter.string(from: userLocale.measurementSystem == .metric ? meterValue : yardsValue)
     }
 }

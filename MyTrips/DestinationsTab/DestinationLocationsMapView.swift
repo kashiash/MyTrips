@@ -156,8 +156,14 @@ struct DestinationLocationsMapView: View {
             }
         })
         { selectedPlacemark in
-            LocationDetailView( destination: destination, selectedPlacemark: selectedPlacemark)
-                .presentationDetents([.medium])
+            LocationDetailView(
+                destination: destination,
+                selectedPlacemark: selectedPlacemark,
+                showRoute: .constant(false),
+                travelInterval: .constant(nil),
+                transportType: .constant(.automobile)
+            )
+                .presentationDetents([.height(450)])
         }
         .safeAreaInset(edge: .bottom) {
             VStack {
