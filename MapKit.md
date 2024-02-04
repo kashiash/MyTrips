@@ -8,7 +8,7 @@ Transkrypcja z wideo na YouTube
 
 https://youtu.be/9xzHJAT_Iqk?si=3PNCiLwANBctonzH
 
-Cześć, nazywam się Stuart Lynch i jest to pierwszy film z nowej serii wprowadzającej ulepszenia MapKit dla SwiftUI. W tej serii zbudujemy całą aplikację i użyjemy SwiftData jako warstwy trwałości do zapisywania lokalizacji naszych map między uruchomieniami. W końcu powinieneś ukończyć coś, co moim zdaniem jest bardzo przydatną aplikacją do dodania do iPhone'a lub iPada. Uwielbiam otrzymywać opinie od użytkowników, więc naciśnij przycisk kciuka w górę, jeśli podobał Ci się ten film i zostaw komentarz poniżej. Upewnij się, że subskrybujesz wideo i dzwonisz, aby otrzymywać powiadomienia o nowych filmach. A jeśli chcesz wesprzeć moją pracę, możesz kupić mi kawę. Pozwól więc, że oprowadzę Cię po aplikacji i zobaczę, co będziemy budować w tej serii. Nazywam tę aplikację MyTrips. A jeśli zamierzasz podążać za mną, powinieneś, ponieważ będziesz uczyć się lepiej i zapamiętasz więcej, gdy będziesz pracować razem ze mną, powinieneś pobrać projekt startowy z linku w opisie tego filmu. I upewnij się, że pobierasz projekt startowy z głównej gałęzi. Ukończony kod źródłowy dla każdego z filmów zostanie udostępniony we własnej gałęzi. Możesz więc pobrać spakowane archiwum z menu kodu. 
+
 
 ​	Kiedy skończymy, aplikacja będzie wyglądać mniej więcej tak. Teraz mogą nastąpić pewne zmiany, ponieważ jest to aplikacja, na której oparłem tę serię, ale może się nieco zmienić, gdy będę bardziej zagłębiał się w tę serię. Kiedy uruchamiam aplikację, jestem przenoszony do mojej bieżącej lokalizacji. Moja aktualna lokalizacja znajduje się tutaj, gdzie jest mój dom. Tak się składa, że zapisałem ten region jako jedno z moich miejsc docelowych, jak wkrótce zobaczysz. Zapisałem kilka lokalizacji, które regularnie odwiedzam, a wszystkie informacje są przechowywane za pomocą SwiftData. Mogę więc powiększyć mapę, wybrać jedną z zaznaczonych lokalizacji i uzyskać podgląd tego obszaru. Mogę zobaczyć, ile czasu zajmie mi jazda samochodem lub nawet spacer. Mogę też otworzyć lokalizację w Mapach Apple. Mogę też wyświetlić trasę w tej aplikacji. Mogę też uzyskać wskazówki krok po kroku. Mogę zmienić wygląd mapy, może satelitarnej z drogami, ustawić wysokość na realistyczną i wybrać wyświetlanie innych punktów widzenia, a może pokazać lub ukryć ruch drogowy. Następnie mogę powiększyć mapę i przejść do trybu 3D. Mogę nawet zmienić nachylenie, aby uzyskać wspaniały widok 3D. A skoro już tu jestem, pozwól, że poszukam kawiarni i zobaczę, czy znajdę taką, która mi się spodoba. Wszystkie te funkcje są dostępne dzięki MapKit dla SwiftUI. Inną zaletą tej aplikacji jest możliwość wykorzystania jej do planowania wakacji. Na karcie miejsc docelowych możesz utworzyć lokalizacje, które chcesz odwiedzić, a w każdym przypadku wybrać region i dodać kilka miejsc, które chcesz odwiedzić. Na mojej aktualnej liście lokalizacji mam już Berlin, Paryż i Vancouver. Gdy odwiedzam każde z miejsc docelowych, region mapy zmienia się, aby pokazać ten region i wszystkie zapisane w nim lokalizacje. Utworzę więc nową lokalizację. Naprawdę chcę wrócić do Sztokholmu, więc chcę dodać go do mojej listy. Gdy dodam tę lokalizację, widok zostanie domyślnie ustawiony na bieżącą lokalizację. Wyszukajmy więc Sztokholm. Następnie mogę dostosować i ustawić region na ten, który chcę odwiedzić. Wyszukam i dodam kilka atrakcji. Po znalezieniu miejsc, które chcę odwiedzić, dodaję je do mojej bazy danych. Zostaną one dodane do tych miejsc dla Sztokholmu. Jedną z atrakcji, której nie widziałem, jest Muzeum Vasa. Pozwól mi je wyszukać. I mogę je dodać. Teraz, gdy odwiedzę Sztokholm i otworzę aplikację, pierwszy ekran pokaże tę lokalizację i wszystkie zapisane znaczniki. Myślę, że to całkiem przydatna aplikacja. Mam więc nadzieję, że pozostaniesz ze mną podczas tworzenia aplikacji. 
 
@@ -641,9 +641,11 @@ Teraz wszystkie nasze znaczniki, które mamy w naszych danych znaczników, są w
 
 https://youtu.be/7MbagyBB9VM?si=19QIYquaM4ebkPpf
 
+https://www.youtube.com/watch?v=7MbagyBB9VM
 
 
-Teraz, gdy dodaliśmy makiety danych do naszego kontenera podglądu, możemy zacząć budować naszą aplikację. Będziesz chciał zaplanować więcej niż jedną podróż wraz z lokalizacjami do odwiedzenia w miejscu docelowym, więc od tego zaczniemy ten film. Jeśli pracujesz ze mną, możesz kontynuować od kodu źródłowego, który ukończyłeś w ostatnim filmie. Jeśli jednak dopiero zaczynasz i chcesz pracować razem ze mną, możesz pobrać ukończony projekt z ostatniego filmu. Link znajduje się w opisie poniżej. Jeśli chodzi o moje repozytorium GitHub, po prostu upewnij się, że pobrałeś gałąź z filmu 2. Możesz już zobaczyć, że teraz wróciłem do mojego projektu, uruchomiłem teraz nową gałąź dla tego filmu, a ukończony kod źródłowy tego filmu będzie w tej gałęzi. Linki do obu będą w opisie. 
+
+
 
 Zacznijmy więc od utworzenia nowego widoku SwiftUI w folderze zakładki `Destinations` i nazwiemy go `DestinationsListView`. Użyjemy go do wyświetlenia listy wszystkich naszych miejsc docelowych i stworzymy sposób na tworzenie nowych. 
 
@@ -662,17 +664,25 @@ Cóż, ponieważ chcemy użyć danych z naszego kontenera podglądu na liście, 
 }
 ```
 
-Na szczęście wszystkie modele SwiftData są zgodne z protokołem identyfikowalności, więc mogę utworzyć listę, która wyświetli te lokalizacje, ale chcę to zrobić tylko wtedy, gdy nie jest to pusta tablica. Jeśli jest pusta, zamierzam wyświetlić widok `ContentUnavailableView`, aby poinformować naszych użytkowników, że powinni go utworzyć. Ale najpierw stwórzmy nasze sprawdzenie dla naszej listy. Zamierzam więc otoczyć widok tekstowy instrukcją if-else, która sprawdza ten przypadek. A następnie dla klauzuli else utworzę widok `ContentUnavailableView`, który ma tytuł, system, obraz i opis. W tytule użyję ciągu "Brak miejsc docelowych". " A następnie dla obrazu systemu użyję "globe. desk. W przypadku opisu użyję widoku tekstowego i zacznę od ciągu "Nie skonfigurowano jeszcze żadnych miejsc docelowych". " Stuknij w. (W tym momencie chcę wyświetlić obraz, który będzie na moim pasku narzędzi. Użyję więc interpolacji ciągów znaków, aby wyświetlić obraz o nazwie systemowej " . circle. fill.". ") A następnie mogę kontynuować z moim ciągiem znaków ze spacją, a następnie przyciskiem na pasku narzędzi, aby rozpocząć.
+Na szczęście wszystkie modele SwiftData są zgodne z protokołem identyfikowalności, więc mogę utworzyć listę, która wyświetli te lokalizacje, ale chcę to zrobić tylko wtedy, gdy nie jest to pusta tablica.
+
+### `ContentUnavailableView`
+
+ Jeśli jest pusta, zamierzam wyświetlić widok `ContentUnavailableView`, aby poinformować naszych użytkowników, że powinni go utworzyć. Ale najpierw stwórzmy nasze sprawdzenie dla naszej listy. Zamierzam więc otoczyć widok tekstowy instrukcją if-else, która sprawdza ten przypadek. A następnie dla klauzuli else utworzę widok `ContentUnavailableView`, który ma tytuł, system, obraz i opis. W tytule użyję ciągu "Brak miejsc docelowych". " A następnie dla obrazu systemu użyję "globe. desk. W przypadku opisu użyję widoku tekstowego i zacznę od ciągu "Nie skonfigurowano jeszcze żadnych miejsc docelowych". " Stuknij w. (W tym momencie chcę wyświetlić obraz, który będzie na moim pasku narzędzi. Użyję więc interpolacji ciągów znaków, aby wyświetlić obraz o nazwie systemowej " . circle. fill.". ") A następnie mogę kontynuować z moim ciągiem znaków ze spacją, a następnie przyciskiem na pasku narzędzi, aby rozpocząć.
 
 ```swift
-                if !destinations.isEmpty {
-                    Text("Hello world")
-                } else {
-                    ContentUnavailableView("No Destinations", systemImage: "globe.desk", description: Text("You have not se up any destinations yet. Tap on the \(Image(systemName: "plus.circle.fill")) button in the toolbar to begin"))
-                }
+if !destinations.isEmpty {
+  Text("Hello world")
+} else {
+  ContentUnavailableView("No Destinations", systemImage: "globe.desk", description: Text("You have not se up any destinations yet. Tap on the \(Image(systemName: "plus.circle.fill")) button in the toolbar to begin"))
+}
 ```
 
  Teraz możesz się zastanawiać, dlaczego wyświetlany jest napis "Hello World". Cóż, powodem jest to, że użyliśmy naszego kontenera modelu, a pobieranie znalazło tę pojedynczą lokalizację Warszawa, którą mamy w naszym kontenerze podglądu. 
+
+
+
+### DestinationsListView
 
 Wróćmy więc do zakładki Start i zmieńmy widok dla tej drugiej zakładki na `DestinationsListView`. 
 
@@ -683,7 +693,7 @@ Wróćmy więc do zakładki Start i zmieńmy widok dla tej drugiej zakładki na 
                     }
 ```
 
-Teraz, gdy dotknę zakładki tej drugiej zakładki, zobaczysz, że dostawca podglądu nie został znaleziony, a to dlatego, że ten widok nie ma pojęcia, co to jest. 
+Teraz, gdy wybiorę drugą zakładkę - `Destinations`, zobaczysz, że dostawca podglądu nie został znaleziony, a to dlatego, że ten widok nie ma pojęcia, co to jest. 
 
 ![image-20240120123134638](image-20240120123134638.png)
 
@@ -710,7 +720,7 @@ Wracając do `DestinationsListView`, chcę mieć przycisk na pasku narzędzi naw
         }
 ```
 
-"Następnie dodam pasek narzędzi. Ten pasek narzędzi będzie miał tylko jeden przycisk, więc nie potrzebuję elementu paska narzędzi. Mogę po prostu określić przycisk z etykietą, która będzie tym obrazem, którego użyłem w moim ContentUnavailableView. Jest to obraz używający nazwy systemowej plus ... wypełnienie. 
+Następnie dodam pasek narzędzi. Ten pasek narzędzi będzie miał tylko jeden przycisk, więc nie potrzebuję elementu paska narzędzi. Mogę po prostu określić przycisk z etykietą, która będzie tym obrazem, którego użyłem w moim ContentUnavailableView. Jest to obraz używający nazwy systemowej plus ... wypełnienie. 
 
 ```swift
             .toolbar {
@@ -721,6 +731,25 @@ Wracając do `DestinationsListView`, chcę mieć przycisk na pasku narzędzi naw
                 }
             }
 ```
+
+
+
+Zastąpmy więc TextView z powrotem w naszym ciele listą, która iteruje po tablicy Destinations. A to da nam miejsce docelowe, którego możemy użyć do wyświetlenia. Wewnątrz listy utworzę HStack. Jako pierwszy element utworzę obraz o nazwie systemowej "globe". Ustawię skalę obrazu na dużą i zastosuję styl pierwszego planu "akcent". "Jako drugi element utworzę VStack. Jako pierwszy element w VStack wyświetlę TextView wyświetlający nazwę miejsca docelowego.
+
+```swift
+                    List(destinations) { destination in
+                        HStack{
+                            Image(systemName: "globe")
+                                .imageScale(.large)
+                                //.foregroundStyle(.accent)
+                            VStack(alignment: .leading) {
+                                Text(destination.name)
+                            }
+                        }
+                    }
+```
+
+
 
 Całość daje nam szkielet widoku z lista rekordów z bazy:
 
@@ -755,9 +784,9 @@ Całość daje nam szkielet widoku z lista rekordów z bazy:
 
 
 
+A następnie poniżej, chcę wyświetlić kolejny TextView wyświetlający liczbę znaczników miejsca docelowego przy użyciu interpolacji ciągów znaków, a następnie lokalizacje ciągów znaków. Czcionkę ustawię na "caption", a styl pierwszego planu na "secondary". 
 
 
-Zastąpmy więc TextView z powrotem w naszym ciele listą, która iteruje po tablicy Destinations. A to da nam miejsce docelowe, którego możemy użyć do wyświetlenia. Wewnątrz listy utworzę HStack. Jako pierwszy element utworzę obraz o nazwie systemowej "globe". Ustawię skalę obrazu na dużą i zastosuję styl pierwszego planu "akcent". "Jako drugi element utworzę VStack. Jako pierwszy element w VStack wyświetlę TextView wyświetlający nazwę miejsca docelowego. A następnie poniżej, chcę wyświetlić kolejny TextView wyświetlający liczbę znaczników miejsca docelowego przy użyciu interpolacji ciągów znaków, a następnie lokalizacje ciągów znaków. Czcionkę ustawię na "caption", a styl pierwszego planu na "secondary". "Cóż, jest całkiem nieźle, ale możemy pójść o krok dalej. 
 
 ```swift
 Text("\(destination.placemarks.count) location")
@@ -765,7 +794,11 @@ Text("\(destination.placemarks.count) location")
 .foregroundStyle(.secondary)
 ```
 
-Co by było, gdyby istniała tylko jedna lokalizacja, pojedyncza? Nasze lokalizacje to stały ciąg znaków w liczbie mnogiej. Cóż, tak się składa, że w Swifcie istnieje sposób, aby to dla nas określić i automatycznie zmienić formę mnogą na pojedynczą naszych słów. Możemy to zrobić zaraz po pierwszym cudzysłowie, wpisując karetkę, a następnie lewy nawias kwadratowy. Następnie mogę usunąć "s" z lokalizacji i zamknąć je prawym nawiasem kwadratowym. A oto klucz. Dodaję w nawiasie "inflect true". "Wszystko to w ramach cytatu. 
+
+
+Cóż, jest całkiem nieźle, ale możemy pójść o krok dalej. 
+
+Co by było, gdyby istniała tylko jedna lokalizacja, pojedyncza? Nasze lokalizacje to stały ciąg znaków w liczbie mnogiej. Cóż, tak się składa, że w Swifcie istnieje sposób, aby to dla nas określić i automatycznie zmienić formę mnogą na pojedynczą naszych słów. Możemy to zrobić zaraz po pierwszym cudzysłowie, wpisując karetkę, a następnie lewy nawias kwadratowy. Następnie mogę usunąć "s" z lokalizacji i zamknąć je prawym nawiasem kwadratowym. A oto klucz. Dodaję w nawiasie "inflect true". Wszystko to w ramach cudzysłowów naszego wpisu. 
 
 ```swift
 Text("^[\(destination.placemarks.count) location](inflect: true)")
@@ -773,19 +806,35 @@ Text("^[\(destination.placemarks.count) location](inflect: true)")
 .foregroundStyle(.secondary)
 ```
 
-Widzimy teraz, że ponownie pokazujemy liczbę mnogą, mimo że lokalizacja jest tylko w liczbie pojedynczej w moim ciągu. Jeśli wrócę teraz do zakładki Start, zobaczę, że lista pojawia się również tutaj. 
+![image-20240204142724700](image-20240204142724700.png)
+
+Widzimy teraz, że ponownie pokazujemy liczbę mnogą, mimo że lokalizacja jest tylko w liczbie pojedynczej w moim ciągu. 
 
 Uruchommy apliakcje na symulatorze.  Po uruchomieniu i przejściu do zakładki Miejsca docelowe, ponieważ nie używamy naszego kontenera podglądu, nie może jeszcze znaleźć żadnych lokalizacji i widzę widok niedostępnej zawartości. 
 
+
+
+### Dodawanie nowych obiektów `Destination`
+
 Cóż, nadal musimy mieć możliwość tworzenia i potencjalnego usuwania miejsc docelowych znajdujących się na tej liście. A ponieważ miejsce docelowe wymaga tylko nazwy podczas tworzenia nowego widoku, użyję do tego alertu z polem wiadomości. Aby wyzwolić alert, będziemy potrzebować właściwości stanu, którą można przełączać po dotknięciu przycisku Dodaj na pasku narzędzi nawigacji. 
 
-W tym celu utworzę nową właściwość stanu o nazwie "NewDestination" i zainicjuję ją jako "false". "
+W tym celu utworzę nową właściwość stanu o nazwie `showNewDestionationAlert` i zainicjuję ją jako "false". "
 
 ```swift
    @State private var showNewDestionationAlert = false
 ```
 
-A następnie dla akcji na naszym przycisku paska narzędzi po prostu przełączę tę wartość. To pozwoli nam zaprezentować alert. Ale ten alert będzie wymagał właściwości string state dla pola tekstowego dla nazwy miejsca docelowego. 
+A następnie dla akcji na naszym przycisku paska narzędzi po prostu przełączę tę wartość. 
+
+```swift
+Button{
+  showNewDestionationAlert.toggle()
+} label: {
+  Image(systemName: "plus.circle.fill")
+}
+```
+
+To pozwoli nam zaprezentować alert. Ale ten alert będzie wymagał właściwości string state dla pola tekstowego do którego wpiszemy nazwę nowego miejsca docelowego. 
 
 Zamierzam więc utworzyć jedno o nazwie "DestinationName" i zainicjować je jako pusty ciąg. 
 
@@ -793,7 +842,302 @@ Zamierzam więc utworzyć jedno o nazwie "DestinationName" i zainicjować je jak
   @State private var destinationName = ""
 ```
 
-Teraz, gdy przycisk zostanie naciśnięty, dołączę modyfikator alertu. Za pomocą klawisza tytułu prezentowana jest akcja i inicjalizator wiadomości. Mogę użyć ciągu "DestinationName" jako klucza tytułu i zostanie on powiązany jako "isPresented" z właściwością stanu "NewDestination". Następnie mogę nacisnąć Enter, aby utworzyć moje zamknięcia. Pierwsze zamknięcie to miejsce, w którym możemy utworzyć pole tekstowe i akcję przycisku. Tak więc w polu tekstowym użyję ciągu "EnterDestinationName" i powiążę ten ciąg z właściwością stanu "`DestinationName`", którą utworzyliśmy. Następnie utworzę przycisk z etykietą "OK". Ale w przypadku akcji chcę wykonać akcję tylko wtedy, gdy nazwa miejsca docelowego jest pusta. Nie chcę żadnych pustych nazw miejsc docelowych. Zapobiegnie to pustym wpisom. Następnie możemy utworzyć nowe miejsce docelowe jako obiekt docelowy, używając "DestinationName" jako właściwości name. Teraz, aby utworzyć nowe miejsce docelowe, będziemy potrzebować dostępu do kontekstu modelu kontenerów SwiftData. Cóż, to proste. W SwiftData jest on wstrzykiwany do środowiska. Wszystko, co musimy zrobić, to go pobrać. Na górze utworzę nową zmienną środowiskową dla kontekstu modelu ścieżki klucza i przypiszę ją do prywatnej zmiennej o tej samej nazwie. Następnie, gdy mamy już miejsce docelowe, możemy użyć kontekstu modelu, aby wstawić miejsce docelowe. Następnie możemy ustawić ciąg "DestinationName" z powrotem na pusty ciąg. Następnym razem, gdy alert zostanie wyświetlony, nie będzie miał tego nazwiska. Następnie podążę za tym z innym przyciskiem, który będzie etykietą "Anuluj" na wypadek, gdybym zmienił zdanie, z rolą "Anuluj". "Ale nie ma potrzeby wykonywania akcji. Spowoduje to po prostu odrzucenie alertu. A następnie dla wiadomości po prostu utworzę pole tekstowe za pomocą ciągu "Utwórz nowe miejsce docelowe". "Możesz to teraz przetestować w podglądzie. Jak widać, można utworzyć nowe miejsce docelowe, ale będzie ono tylko w pamięci. Aby usunąć miejsce docelowe, chcę użyć akcji machnięcia na elemencie na liście. W HDAC utworzę więc akcję przeciągnięcia i określę krawędź końcową. Następnie dla akcji użyjemy przycisku z rolą "Destructive". W przypadku etykiety utworzę kolejną etykietę, używając tytułu ciągu "Usuń" i obrazu systemowego "Kosz". "A następnie dla akcji możemy uzyskać dostęp do funkcji usuwania kontekstu modelu, przekazując to miejsce docelowe. Ostatnią częścią dzisiejszego dnia jest skonfigurowanie nawigacji z widoku listy do naszej mapy miejsc docelowych. A kiedy już tam będziemy, pozwolę sobie edytować nazwę i ustawić konkretny region dla miejsca docelowego. Aby to zrobić, w widoku listy miejsc docelowych musimy użyć zawartości naszego wiersza listy jako linku nawigacyjnego, który przeniesie nas do tego widoku i przejdzie do określonego miejsca docelowego. Ale najpierw zacznijmy od ostatecznego widoku docelowego. Musimy więc wprowadzić tutaj pewne zmiany w stosunku do poprzedniego filmu. Nie będziemy pobierać wszystkich miejsc docelowych dla tego widoku, aby znaleźć określone miejsce docelowe. Zamiast tego będziemy przekazywać je z naszego linku. Mogę więc usunąć zapytanie. A ponieważ miejsce docelowe zostanie przekazane, nie będzie ono własnością prywatną stanu ani nie będzie opcjonalne. Usuniemy więc @State private i znak zapytania. Następnie mogę usunąć warunek if let w konstruktorze zawartości mapy, ponieważ miejsce docelowe nie jest już opcjonalne. W bloku on a peer mamy już nasze miejsce docelowe. Mogę więc to usunąć i nie jest to już opcjonalne. Mogę więc usunąć znak zapytania. Tak więc pozycja kamery zostanie ustawiona przez region określony przez nasze miejsce docelowe. Makro podglądu wymaga wyświetlenia miejsca docelowego. Musimy więc w jakiś sposób pobrać je z naszego kontenera podglądu. Najpierw więc usunę modyfikator kontenera modelu dołączony do tego makra podglądu. Dodajmy argument dla miejsca docelowego i przejdźmy do tworzenia lub znajdowania sposobu jego uzyskania. Możemy więc utworzyć właściwość o nazwie container, która będzie naszym docelowym kontenerem podglądu. Teraz nie możemy wykonać zapytania w naszym podglądzie, ale możemy użyć metody pobierania kontenerów, aby pobrać nasze miejsce docelowe Warszawa z kontenera podglądu. Możemy więc utworzyć deskryptor pobierania, aby pobrać wszystkie miejsca docelowe. Spowoduje to pobranie tego samego, co zapytanie, tylko że nie będzie to obserwowalne. Ale to w porządku, ponieważ wyświetlamy statyczny podgląd. A następnie, aby uzyskać pierwsze miejsce docelowe, możemy utworzyć miejsce docelowe, a następnie użyć wymuszonej próby użycia metody pobierania głównego kontekstu kontenerów, przekazując deskryptor pobierania, który pobierze je wszystkie. A ponieważ wiemy, że mamy jeden Warszawa na początkowej pozycji, jest to zerowy iterator tablicy. Następnie musimy zwrócić widok mapy lokalizacji docelowej z tym miejscem docelowym. Tak więc miejsce docelowe na mapie powinno być teraz wyśrodkowane wokół Paryża, wyświetlając te znaczniki tak jak poprzednio. Teraz, ponieważ dotrzemy tutaj za pomocą stosu nawigacji, powinniśmy osadzić widok mapy lokalizacji docelowych w stosie nawigacji w podglądzie, abyśmy mogli przypisać tytuł i zobaczyć, jak wygląda w podglądzie. Pozwól więc, że utworzę teraz nowy tytuł, a także ustawię tryb wyświetlania na wbudowany. Zrobię to przed funkcją onMapChange. Tytuł nawigacji to miejsce docelowe i ustawię tryb inline. Teraz, gdy po raz pierwszy dotrę do tego widoku po utworzeniu nowego miejsca docelowego, domyślny region automatyczny zostanie ustawiony, ponieważ obecnie jest zerowy. Chcę więc dostosować go tutaj, aby upewnić się, że zostanie zapisany. Mogę również chcieć zmienić nazwę mojego miejsca docelowego na wypadek, gdybym przeliterował ją niepoprawnie. Nad mapą utwórz VStack i ustaw padding na poziomy, aby przyciągnąć go z boków. Dla pierwszego elementu VStack utwórz widok zawartości z etykietą, używając inicjalizatora etykiety zawartości. W przypadku etykiety wystarczy użyć widoku tekstowego z nazwą ciągu znaków. Zawartość to miejsce, w którym utworzymy nasz widok tekstowy, a jako klucza tytułu użyjemy ciągu "Enter Destination Name". "Musi on być powiązany z nazwą miejsca docelowego, którą przekazujemy. Problem polega na tym, że musi to być powiązanie. Cóż, na szczęście dla nas, nasz model danych Swift jest obserwowany, ponieważ pochodzi z zapytania w ostatnim widoku. Ale aby użyć znaku dolara do powiązania go, aby nasz kod o tym wiedział, musimy zrobić jeszcze jedną rzecz. Jako pierwszy wpis w treści, utwórz zmienną wiążącą dla miejsca docelowego i przypisz ją do tej, którą przekazaliśmy. Tak więc nasze pole tekstowe będzie używać tej wersji. Następnie możemy ustawić styl pola tekstowego na zaokrąglone obramowanie i styl pierwszego planu na podstawowy. Dla drugiego elementu w VStack utwórz HStack. A dla pierwszego elementu HStack utwórz widok tekstowy, aby poinformować użytkownika, jak dostosować region. Następnie ustaw styl pierwszego planu na drugorzędny. Utwórz element dystansowy, aby przesunąć go w lewo, gdzie możemy utworzyć przycisk po prawej stronie. Ustawimy etykietę przycisku na "Ustaw region". "W przypadku akcji będziemy musieli użyć instrukcji if-let, aby sprawdzić, czy widoczny region został ustawiony, a tak będzie, ponieważ to robimy. Następnie możemy zaktualizować szerokość i długość geograficzną naszego miejsca docelowego do szerokości i długości geograficznej środka widocznego regionu. Następnie możemy zrobić dokładnie to samo dla wartości delta rozpiętości dla naszego miejsca docelowego, przypisując wartości delta rozpiętości widocznego regionu. Następnie możemy zastosować styl przycisku z widocznymi obramowaniami. Jesteśmy prawie na miejscu. Ostatnią rzeczą, którą musimy zrobić, jest powrót do widoku listy naszego miejsca docelowego i skonfigurowanie naszej nawigacji, ponieważ jeszcze tego nie zrobiliśmy. Zrobimy to, tworząc nową właściwość stanu o nazwie "path", która jest typu "NavigationPath". "Możemy więc dodać ją jako powiązany argument do stosu nawigacji. HStack zawartości listy stanie się łączem nawigacyjnym. Otoczymy więc cały HStack linkiem nawigacyjnym, którego wartością będzie miejsce docelowe. Teraz musimy ustawić stos nawigacyjny dla tego miejsca docelowego. Tak więc, dołączając do listy, możemy użyć metody docelowej nawigacji dla typu "destination. self. " A to zapewni nam miejsce docelowe, które możemy przekazać do widoku mapy naszej lokalizacji docelowej. Możesz to teraz przetestować w podglądzie. Jeśli dotkniesz Paryża, zostaniesz przeniesiony do miejsca docelowego w Paryżu i zobaczysz, że region jest ustawiony i widzisz znaczniki miejsca. Mogę edytować nazwę i zmienić region. Pozwolę sobie trochę namieszać i ustawić region. Po powrocie zobaczę, że nazwa została zmieniona na mojej liście. Jeśli ponownie dotknę tego wiersza, zobaczę, że region również się zmienił. Miałem na myśli ten region, w którym tak naprawdę nie chcę być. Jest jednak jeszcze jedna rzecz, którą chcę zrobić: kiedy tworzę nowe miejsce docelowe, chcę od razu zostać przeniesiony do mapy tego miejsca docelowego, aby móc zaktualizować region. Tak więc, w akcji dla przycisku OK, po zresetowaniu nazwy do pustego ciągu, zamierzam dołączyć nowe miejsce docelowe do ścieżki, zmuszając je do wepchnięcia na stos i przeniesienia mnie do widoku tego miejsca docelowego. Przetestujmy to, tworząc nowe miasto. Wypróbuję Berlin. Jak widać, jestem przenoszony bezpośrednio do następnego widoku z domyślnym widokiem mapy. Powiększmy więc widok Berlina. Wystarczy, że kliknę dwukrotnie na mapie i będę drążyć w dół, aż znajdę obszar Berlina, który chcę odwiedzić. Następnie mogę dotknąć i ustawić region. Kiedy wrócę do widoku listy i dotknę Paryża, otrzymam region Paryża. I już tam nawigowałem. Idealnie. Jeśli wrócę, ale tym razem dotknę Berlina, zostanę przeniesiony do Berlina i czeka na nas utworzenie nowych lokalizacji. O tym w następnym filmie. W następnym filmie dowiemy się, w jaki sposób możemy ułatwić wyszukiwanie w widoku miejsca docelowego i znaleźć interesujące nas lokalizacje do ustawienia jako znaczniki. Jeśli podoba Ci się ta seria, daj kciuka w górę i zostaw komentarz. A jeśli ta seria nie została jeszcze ukończona, zasubskrybuj mój kanał, aby otrzymywać powiadomienia o nowych filmach. W przeciwnym razie kontynuuj serię, sprawdzając następny film na liście odtwarzania. [BLANK_AUDIO]
+Teraz, gdy przycisk zostanie naciśnięty, ustawię modyfikator alertu. Za pomocą klawisza tytułu prezentowana jest akcja i inicjalizator wiadomości. Mogę użyć ciągu "`DestinationName`" jako klucza tytułu i zostanie on powiązany jako "`isPresented`" z właściwością stanu `showNewDestionationAlert`. Następnie mogę nacisnąć Enter, aby utworzyć moje zamknięcia. Pierwsze zamknięcie to miejsce, w którym możemy utworzyć pole tekstowe i akcję przycisku. Tak więc w polu tekstowym użyję ciągu `EnterDestinationName` i powiążę ten ciąg z właściwością stanu "`DestinationName`", którą utworzyliśmy.
+
+```swift
+.alert("Enter Destination Name",isPresented: $showNewDestionationAlert) {
+  TextField("Enter destination name", text: $destinationName)
+  .autocorrectionDisabled()
+```
+
+Następnie utworzę przycisk z etykietą "OK". Ale w przypadku akcji chcę wykonać akcję tylko wtedy, gdy nazwa miejsca docelowego jest pusta. Nie chcę żadnych pustych nazw miejsc docelowych. Zapobiegnie to pustym wpisom. 
+
+```swift
+Button("OK") {
+  if !destinationName.isEmpty {
+    // kod zapisujacy dane
+  }
+}
+```
+
+Następnie możemy utworzyć nowe miejsce docelowe jako obiekt docelowy, używając "`DestinationName`" jako właściwości name. Teraz, aby utworzyć nowe miejsce docelowe, będziemy potrzebować dostępu do kontekstu modelu kontenerów SwiftData. Cóż, to proste. W SwiftData jest on wstrzykiwany do środowiska. Wszystko, co musimy zrobić, to go pobrać. Na górze utworzę nową zmienną środowiskową dla kontekstu modelu ścieżki klucza i przypiszę ją do prywatnej zmiennej o tej samej nazwie.
+
+```swift
+ @Environment(\.modelContext) private var modelContext
+```
+
+ Następnie, gdy mamy już miejsce docelowe, możemy użyć kontekstu modelu, aby wstawić miejsce docelowe. Następnie możemy ustawić ciąg "DestinationName" z powrotem na pusty ciąg. Następnym razem, gdy alert zostanie wyświetlony, bedziemy mieć puste pole zamiast wartości wpisanej poprzednio. Teraz zajmę się innym przyciskiem, który będzie etykietą "Anuluj" na wypadek, gdybym zmienił zdanie, z rolą "Anuluj". 
+
+```swift
+Button("Cancel",role: .cancel) {
+  destinationName = ""
+}
+```
+
+Ale nie ma potrzeby wykonywania akcji. Spowoduje to po prostu odrzucenie alertu. A następnie dla  wyświetlanej wiadomości po prostu utworzę pole tekstowe  "Utwórz nowe miejsce docelowe". 
+
+```swift
+message: {  Text("Create a new destination") }
+```
+
+
+
+Całość po zmianach:
+
+```swift
+            .toolbar {
+                Button{
+                    showNewDestionationAlert.toggle()
+                } label: {
+                    Image(systemName: "plus.circle.fill")
+                }
+                .alert("New Destination Name",isPresented: $showNewDestionationAlert) {
+                    TextField("Enter destination name", text: $destinationName)
+                        .autocorrectionDisabled()
+                    Button("OK") {
+                        if !destinationName.isEmpty {
+                            let destination = Destination(name: destinationName.trimmingCharacters(in: .whitespacesAndNewlines))
+                            modelContext.insert(destination)
+                            destinationName = ""
+                            path.append(destination)
+                        }
+                    }
+                    Button("Cancel",role: .cancel) {
+                        destinationName = ""
+                    }
+                } message: {
+                    Text("Create a new destination")
+                }
+            }
+```
+
+Możesz to teraz przetestować w podglądzie. Jak widać, można utworzyć nowe miejsce docelowe, ale będzie ono tylko w pamięci. 
+
+![image-20240204151912505](image-20240204151912505.png)
+
+Aby usunąć miejsce docelowe, chcę użyć akcji przesunięcia na elemencie na liście `swipeAction`. W HDAC utworzę więc akcję przeciągnięcia i określę krawędź końcową. Następnie dla akcji użyjemy przycisku z rolą "Destructive". W przypadku etykiety utworzę kolejną etykietę, używając tytułu ciągu "Usuń" i obrazu systemowego "trash". "A następnie dla akcji możemy uzyskać dostęp do funkcji usuwania kontekstu modelu, przekazując to miejsce docelowe. 
+
+```swift
+.swipeActions(edge: .trailing) {
+  Button(role: .destructive) {
+    modelContext.delete(destination)
+  } label: {
+    Label("Delete", systemImage: "trash")
+  }
+}
+```
+
+
+
+### Mapa dla wybranego miejsca docelowego
+
+Ostatnią częścią dzisiejszego dnia jest skonfigurowanie nawigacji z widoku listy do naszej mapy miejsc docelowych. A kiedy już tam będziemy, pozwolę sobie edytować nazwę i ustawić konkretny region dla miejsca docelowego. Aby to zrobić, w widoku listy miejsc docelowych musimy użyć zawartości naszego wiersza listy jako linku nawigacyjnego, który przeniesie nas do tego widoku i przejdzie do określonego miejsca docelowego. Ale najpierw zacznijmy od ostatecznego widoku docelowego. Musimy więc wprowadzić tutaj pewne zmiany w stosunku do poprzedniego filmu. Nie będziemy pobierać wszystkich miejsc docelowych dla tego widoku, aby znaleźć określone miejsce docelowe. Zamiast tego będziemy przekazywać je z naszego linku. Mogę więc usunąć zapytanie `Query destination`
+
+A ponieważ miejsce docelowe zostanie przekazane, nie będzie ono własnością prywatną stanu ani nie będzie opcjonalne. Usuniemy więc @State private i znak zapytania za typem `Destination`. Następnie mogę usunąć warunek if let w konstruktorze zawartości mapy, ponieważ miejsce docelowe nie jest już opcjonalne. Mamy już nasze miejsce docelowe jako parametr wejściowy, więc w bloku `onAppear`, mogę ć przypisanie i znak zapytania w warunku if let. 
+
+```swift
+        .onAppear{
+            if let region = destination.region {
+                cameraPosition = .region(region)
+            }
+        }
+```
+
+ Tak więc pozycja kamery zostanie ustawiona przez region określony przez nasze miejsce docelowe. 
+
+Makro podglądu wymaga wyświetlenia miejsca docelowego. Musimy więc w jakiś sposób pobrać je z naszego kontenera podglądu. Najpierw więc usunę modyfikator kontenera modelu dołączony do tego makra podglądu. Dodajmy argument dla miejsca docelowego i przejdźmy do tworzenia lub znajdowania sposobu jego uzyskania. Możemy więc utworzyć właściwość o nazwie container, która będzie naszym docelowym kontenerem podglądu. 
+
+```swift
+let container = Destination.preview
+```
+
+Teraz nie możemy wykonać zapytania w naszym podglądzie, ale możemy użyć metody pobierania kontenerów, aby pobrać nasze miejsce docelowe Warszawa z kontenera podglądu. Możemy więc utworzyć deskryptor pobierania, aby pobrać wszystkie miejsca docelowe.
+
+```swift
+    let fetchDescriptor = FetchDescriptor<Destination>()
+```
+
+ Spowoduje to pobranie tego samego, co zapytanie, tylko że nie będzie to obserwowalne. Ale to w porządku, ponieważ wyświetlamy statyczny podgląd. A następnie, aby uzyskać pierwsze miejsce docelowe, możemy utworzyć miejsce docelowe, a następnie użyć wymuszonej próby użycia metody pobierania głównego kontekstu kontenerów, przekazując deskryptor pobierania, który pobierze je wszystkie. A ponieważ wiemy, że mamy jeden Warszawa na początkowej pozycji, jest to zerowy iterator tablicy. 
+
+```swift
+let destination = try! container.mainContext.fetch(fetchDescriptor)[0]
+```
+
+Następnie musimy zwrócić widok mapy lokalizacji docelowej z tym miejscem docelowym. Tak więc miejsce docelowe na mapie powinno być teraz wyśrodkowane wokół Warszawy, wyświetlając te znaczniki tak jak poprzednio. 
+
+```swift
+    return NavigationStack {
+        DestinationLocationsMapView(destination: destination)
+    }
+```
+
+Teraz, ponieważ dotrzemy tutaj za pomocą stosu nawigacji, powinniśmy osadzić widok mapy lokalizacji docelowych w stosie nawigacji w podglądzie, abyśmy mogli przypisać tytuł i zobaczyć, jak wygląda w podglądzie. 
+
+```swift
+#Preview {
+    let container = Destination.preview
+    let fetchDescriptor = FetchDescriptor<Destination>()
+    let destination = try! container.mainContext.fetch(fetchDescriptor)[0]
+    return NavigationStack {
+        DestinationLocationsMapView(destination: destination)
+    }
+}
+```
+
+teraz utworzę teraz tytuł widoku, a także ustawię tryb wyświetlania na .inline.
+
+ Zrobię to przed funkcją onMapChange. Tytuł nawigacji to miejsce docelowe i ustawię tryb inline. 
+
+```swift
+        .navigationTitle("Destination")
+        .navigationBarTitleDisplayMode(.inline)
+```
+
+Teraz, gdy po raz pierwszy dotrę do tego widoku po utworzeniu nowego miejsca docelowego, domyślny region automatyczny zostanie ustawiony, ponieważ obecnie jest pusty. 
+
+Chcę więc dostosować go tutaj, aby upewnić się, że zostanie zapisany. Mogę również chcieć zmienić nazwę mojego miejsca docelowego na wypadek, gdybym wpisał ją wcześniej niepoprawnie. Nad mapą utwórz VStack i ustaw padding na poziomy, aby odsunąć go z boków. Dla pierwszego elementu VStack utwórz widok zawartości z etykietą. W przypadku etykiety wystarczy użyć widoku tekstowego z nazwą ciągu znaków. 
+
+```swift
+VStack {
+  LabeledContent {
+  }  label: {
+    Text("Name")
+  }
+}
+.padding(horizontal)
+```
+
+`LabeledContent` to miejsce, w którym utworzymy nasz widok tekstowy, a jako klucza tytułu użyjemy ciągu "Enter Destination Name". 
+
+```swift
+TextField("Enter destination name", text: $destination.name)
+.textFieldStyle(.roundedBorder)
+.foregroundStyle(.primary)
+```
+
+Musi on być powiązany z nazwą miejsca docelowego, którą przekazujemy. Problem polega na tym, że musi to być powiązanie `@Bindable`. Cóż, na szczęście dla nas, nasz model danych Swift jest obserwowany, ponieważ pochodzi z zapytania w ostatnim widoku. Ale aby użyć znaku dolara do powiązania go, aby nasz kod o tym wiedział, musimy zrobić jeszcze jedną rzecz. Jako pierwszy wpis w treści `body`, utwórz zmienną wiążącą dla miejsca docelowego i przypisz ją do tej, którą przekazaliśmy.
+
+```swift
+var body: some View {
+  @Bindable var destination = destination
+```
+
+ Tak więc nasze pole tekstowe będzie używać tej wersji. Następnie możemy ustawić styl pola tekstowego na zaokrąglone obramowanie i styl pierwszego planu na podstawowy. 
+
+Dla drugiego elementu w VStack utwórz HStack. A dla pierwszego elementu HStack utwórz widok tekstowy, aby poinformować użytkownika, jak dostosować region. 
+
+```swift
+HStack {
+  Text("Adjust the map to set the region for your destination.")
+  .foregroundStyle(.secondary)
+```
+
+Następnie ustaw styl pierwszego planu na drugorzędny. Utwórz element dystansowy, aby przesunąć go w lewo, gdzie możemy utworzyć przycisk po prawej stronie. Ustawimy etykietę przycisku na "Ustaw region". 
+
+```swift
+Button("Set region") {
+ ...
+}
+```
+
+W przypadku akcji będziemy musieli użyć instrukcji if-let, aby sprawdzić, czy widoczny region został ustawiony, a tak będzie, ponieważ to robimy. Następnie możemy zaktualizować szerokość i długość geograficzną naszego miejsca docelowego do szerokości i długości geograficznej środka widocznego regionu.
+
+```swift
+
+                    if let visibleRegion {
+                        destination.latitude = visibleRegion.center.latitude
+                        destination.longitude = visibleRegion.center.longitude
+												...
+                    }
+
+```
+
+ Następnie możemy zrobić dokładnie to samo dla wartości delta rozpiętości dla naszego miejsca docelowego, przypisując wartości delta rozpiętości widocznego regionu.
+
+```swift
+                        destination.latitudeDelta = visibleRegion.span.latitudeDelta
+                        destination.longitudeDelta = visibleRegion.span.longitudeDelta
+```
+
+ Następnie możemy zastosować styl przycisku z widocznymi obramowaniami. 
+
+```swift
+.buttonStyle(.borderedProminent)
+```
+
+Całość:
+
+```swift
+VStack {
+  LabeledContent {
+    TextField("Enter destination name", text: $destination.name)
+    .textFieldStyle(.roundedBorder)
+    .foregroundStyle(.primary)
+  } label: {
+    Text("Name")
+  }
+  HStack {
+    Text("Adjust the map to set the region for your destination.")
+    .foregroundStyle(.secondary)
+    Spacer()
+    Button("Set region") {
+      if let visibleRegion {
+        destination.latitude = visibleRegion.center.latitude
+        destination.longitude = visibleRegion.center.longitude
+        destination.latitudeDelta = visibleRegion.span.latitudeDelta
+        destination.longitudeDelta = visibleRegion.span.longitudeDelta
+      }
+    }
+    .buttonStyle(.borderedProminent)
+  }
+}
+.padding(.horizontal)
+```
+
+### Nawigacja pomiędzy listą a podglądem mapy
+
+Jesteśmy prawie na miejscu. Ostatnią rzeczą, którą musimy zrobić, jest powrót do widoku `DestinationsListView` i skonfigurowanie naszej nawigacji, ponieważ jeszcze tego nie zrobiliśmy. Zrobimy to, tworząc nową właściwość stanu o nazwie "path", która jest typu "NavigationPath". 
+
+```swift
+@State private var path = NavigationPath()
+```
+
+Możemy więc dodać ją jako powiązany argument do stosu nawigacji. 
+
+```swift
+    var body: some View {
+        NavigationStack(path: $path) {
+          ...
+        }
+    }
+```
+
+HStack zawartości listy stanie się łączem nawigacyjnym. Otoczymy więc cały HStack linkiem nawigacyjnym, którego wartością będzie miejsce docelowe. 
+
+```swift
+List(destinations) { destination in
+                    NavigationLink(value: destination) {
+                      HStack{ ... }
+                      ...
+```
+
+Teraz musimy ustawić stos nawigacyjny dla tego miejsca docelowego. Tak więc, dołączając do listy, możemy użyć metody docelowej nawigacji dla typu "destination. self. " A to zapewni nam miejsce docelowe, które możemy przekazać do widoku mapy naszej lokalizacji docelowej. 
+
+```swift
+List {...}
+.navigationDestination(for: Destination.self) { destination in                                           DestinationLocationsMapView(destination:destination)
+                                              }
+```
+
+Możesz to teraz przetestować w podglądzie.
+
+![2024-02-04_17-49-56 (1)](2024-02-04_17-49-56%20(1).gif)
+
+ Jeśli dotkniesz Warszawy, zostaniesz przeniesiony do miejsca docelowego w Warszawie i zobaczysz, że region jest ustawiony i widzisz znaczniki miejsca. Mogę edytować nazwę i zmienić region. Pozwolę sobie trochę namieszać i ustawić region. Po powrocie zobaczę, że nazwa została zmieniona na mojej liście. Jeśli ponownie dotknę tego wiersza, zobaczę, że region również się zmienił. Miałem na myśli ten region, w którym tak naprawdę nie chcę być. Jest jednak jeszcze jedna rzecz, którą chcę zrobić: kiedy tworzę nowe miejsce docelowe, chcę od razu zostać przeniesiony do mapy tego miejsca docelowego, aby móc zaktualizować region. Tak więc, w akcji dla przycisku OK, po zresetowaniu nazwy do pustego ciągu, zamierzam dołączyć nowe miejsce docelowe do ścieżki, zmuszając je do wepchnięcia na stos i przeniesienia mnie do widoku tego miejsca docelowego. 
+
+Przetestujmy to, tworząc nowe miasto. Wypróbuję Berlin. Jak widać, jestem przenoszony bezpośrednio do następnego widoku z domyślnym widokiem mapy. Powiększmy więc widok Berlina. Wystarczy, że kliknę dwukrotnie na mapie i będę drążyć w dół, aż znajdę obszar Berlina, który chcę odwiedzić. Następnie mogę dotknąć i ustawić region. Kiedy wrócę do widoku listy i dotknę Gliwic, otrzymam region Gliwic. I już tam nawigowałem. Idealnie. Jeśli wrócę, ale tym razem dotknę Berlina, zostanę przeniesiony do Berlina i czeka na nas utworzenie nowych lokalizacji. O tym w następnym filmie. W następnym filmie dowiemy się, w jaki sposób możemy ułatwić wyszukiwanie w widoku miejsca docelowego i znaleźć interesujące nas lokalizacje do ustawienia jako znaczniki. 
+
+![2024-02-04_17-52-48 (1)](2024-02-04_17-52-48%20(1).gif)
 
 ## Film 4 MapKit i SwiftUI - MapManager i wyszukiwanie
 
@@ -951,15 +1295,49 @@ Funkcje te są częścią protokołu CLLocationManagerDelegate. Musimy więc upe
 
 
 
-W tej chwili ten obszar ostrości jest po prostu zbyt ograniczony i nie widzę znaczników miejsca docelowego dla Paryża. W widoku mapy podróży utworzyłem więc nową funkcję o nazwie update camera position. W treści mogę użyć instrukcji if let, aby rozpakować lokalizację użytkownika menedżera lokalizacji i przypisać ją do właściwości o nazwie lokalizacja użytkownika. Jeśli więc mamy taką lokalizację, możemy utworzyć region użytkownika, który jest regionem współrzędnych MK. Mogę użyć środka i rozpiętości. Centrum będzie moim centrum lokalizacji użytkownika. Następnie możemy utworzyć zakres, który jest zakresem współrzędnych MK z deltą szerokości i deltą długości geograficznej. Mogę określić obie wartości na 0,15. Po utworzeniu tego regionu możemy w bloku animacji przypisać pozycję kamery do tego regionu za pomocą regionu użytkownika. Ale pozwól mi najpierw wrócić i poprawić tę literówkę. Teraz mogę ustawić ten region jako region użytkownika. Teraz chcę uruchomić to na symulatorze, gdzie mam ustawione miejsce docelowe Paris. To mój iPhone 15 Pro. Ale zanim to zrobię, pozwól mi utworzyć blok on appear, aby za każdym razem, gdy jesteśmy w tym widoku, wywoływał tę funkcję. Kiedy więc uruchomię tę funkcję i pojawi się pierwsza karta, pozycja mojej kamery będzie teraz bardziej wyśrodkowana wokół znaczników miejsca w mojej lokalizacji, którą jest Paryż. Ostatnią rzeczą, którą chcę zrobić, jest zmiana widoku tekstowego, który mówi o potrzebie pomocy użytkownikowi. W grupie widoków udostępnionych utworzę nowy plik SwiftUI, który nazwę location denied view. Zastąpię w nim ten widok tekstowy widokiem niedostępnej zawartości, używając opisu etykiety i inicjalizatora akcji. W przypadku etykiety zmienię tekst na Wymagane usługi lokalizacyjne. A następnie zamiast obrazu systemu zmienię go na obraz. Użyję obrazu ekranu startowego, który mam w folderze zasobów. I mogę przywrócić podgląd tutaj, ponieważ jest on tylko w podglądzie. Widzę teraz wyświetlony obraz. W opisie zmienię tekst na wielowierszowy, dzięki czemu będę mógł użyć trzech cudzysłowów. Mogę teraz umieścić tekst w różnych wierszach i instrukcje krok po kroku. Więc po pierwsze, dotknij przycisku poniżej i przejdź do prywatności i bezpieczeństwa, włączając to w cudzysłów. Krok drugi, w nowym wierszu, dotknij usług lokalizacyjnych, nowy wiersz. Krok trzeci, zlokalizuj aplikację MyTrips i dotknij jej. A następnie krok czwarty, zmień ustawienie na podczas korzystania z aplikacji. Nie podoba mi się to wyśrodkowanie, więc zmienię wyrównanie wielu tekstów na wiodące. Teraz dla przycisku zmienię widok tekstu na Otwórz ustawienia. A następnie dla akcji mogę wywołać funkcję otwierania współdzieloną z kropką aplikacji UI. Będzie ona wymagała adresu URL. Możemy utworzyć adres URL z ciągu znaków, UI application dot open settings URL string. Będzie on musiał zostać rozpakowany na siłę. Jest to całkowicie bezpieczne. A następnie dla słownika opcji, zamierzam po prostu uczynić go pustym słownikiem. A następnie dla obsługi zakończenia użyję nil. Ustawię też styl przycisku na wyróżniający się. Mogę teraz wrócić do punktu początkowego aplikacji, pliku aplikacji MyTrips, i zmienić klauzulę else na widok odmowy lokalizacji. Ostatni test na zakończenie tego wideo. Otworzę teraz moje urządzenie testowe i usunę aplikację. A następnie uruchomię ją ponownie. Tym razem nie zamierzam zezwalać. Możesz zobaczyć, że zostałem przeniesiony do nowego widoku, w którym otrzymałem kilka instrukcji do wykonania. Gdy już to zrobię, mogę wrócić do aplikacji. I widzę, że działa zgodnie z oczekiwaniami. Pamiętaj, że nie będzie to działać w symulatorze, ponieważ w symulatorze nie można już uzyskać dostępu do usług lokalizacyjnych z menu prywatności i bezpieczeństwa. 
+W tej chwili ten obszar ostrości jest po prostu zbyt ograniczony i nie widzę znaczników miejsca docelowego dla Paryża. W widoku mapy podróży utworzyłem więc nową funkcję o nazwie update camera position. W treści mogę użyć instrukcji if let, aby rozpakować lokalizację użytkownika menedżera lokalizacji i przypisać ją do właściwości o nazwie lokalizacja użytkownika. Jeśli więc mamy taką lokalizację, możemy utworzyć region użytkownika, który jest regionem współrzędnych MK. Mogę użyć środka i rozpiętości. Centrum będzie moim centrum lokalizacji użytkownika. Następnie możemy utworzyć zakres, który jest zakresem współrzędnych MK z deltą szerokości i deltą długości geograficznej. Mogę określić obie wartości na 0,15. Po utworzeniu tego regionu możemy w bloku animacji przypisać pozycję kamery do tego regionu za pomocą regionu użytkownika. Ale pozwól mi najpierw wrócić i poprawić tę literówkę. Teraz mogę ustawić ten region jako region użytkownika. Teraz chcę uruchomić to na symulatorze, gdzie mam ustawione miejsce docelowe Paris. To mój iPhone 15 Pro. Ale zanim to zrobię, pozwól mi utworzyć blok on appear, aby za każdym razem, gdy jesteśmy w tym widoku, wywoływał tę funkcję. Kiedy więc uruchomię tę funkcję i pojawi się pierwsza karta, pozycja mojej kamery będzie teraz bardziej wyśrodkowana wokół znaczników miejsca w mojej lokalizacji, którą jest Paryż. Ostatnią rzeczą, którą chcę zrobić, jest zmiana widoku tekstowego, który mówi o potrzebie pomocy użytkownikowi. W grupie widoków udostępnionych utworzę nowy plik SwiftUI, który nazwę location denied view. Zastąpię w nim ten widok tekstowy widokiem niedostępnej zawartości, używając opisu etykiety i inicjalizatora akcji. W przypadku etykiety zmienię tekst na Wymagane usługi lokalizacyjne. A następnie zamiast obrazu systemu zmienię go na obraz. Użyję obrazu ekranu startowego, który mam w folderze zasobów. I mogę przywrócić podgląd tutaj, ponieważ jest on tylko w podglądzie. Widzę teraz wyświetlony obraz. W opisie zmienię tekst na wielowierszowy, dzięki czemu będę mógł użyć trzech cudzysłowów. Mogę teraz umieścić tekst w różnych wierszach i instrukcje krok po kroku. Więc po pierwsze, dotknij przycisku poniżej i przejdź do prywatności i bezpieczeństwa, włączając to w cudzysłów. Krok drugi, w nowym wierszu, dotknij usług lokalizacyjnych, nowy wiersz. Krok trzeci, zlokalizuj aplikację MyTrips i dotknij jej. A następnie krok czwarty, zmień ustawienie na podczas korzystania z aplikacji. Nie podoba mi się to wyśrodkowanie, więc zmienię wyrównanie wielu tekstów na wiodące. Teraz dla przycisku zmienię widok tekstu na Otwórz ustawienia. A następnie dla akcji mogę wywołać funkcję otwierania współdzieloną z kropką aplikacji UI. Będzie ona wymagała adresu URL. Możemy utworzyć adres URL z ciągu znaków, UI application dot open settings URL string. Będzie on musiał zostać rozpakowany na siłę. Jest to całkowicie bezpieczne. A następnie dla słownika opcji, zamierzam po prostu uczynić go pustym słownikiem. A następnie dla obsługi zakończenia użyję nil. Ustawię też styl przycisku na wyróżniający się. Mogę teraz wrócić do punktu początkowego aplikacji, pliku aplikacji MyTrips, i zmienić klauzulę else na widok odmowy lokalizacji. Ostatni test na zakończenie tego wideo. Otworzę teraz moje urządzenie testowe i usunę aplikację. A następnie uruchomię ją ponownie. Tym razem nie zamierzam zezwalać na dostep do lokalizacji. Możesz zobaczyć, że zostałem przeniesiony do nowego widoku, w którym otrzymałem kilka instrukcji do wykonania. Gdy już to zrobię, mogę wrócić do aplikacji. I widzę, że działa zgodnie z oczekiwaniami. Pamiętaj, że nie będzie to działać w symulatorze, ponieważ w symulatorze nie można już uzyskać dostępu do usług lokalizacyjnych z menu prywatności i bezpieczeństwa. 
 
 
 
-## MapKit ze SwiftUI - wyszukiwanie i otwieranie lokalizacji użytkownika w Mapach Google
+## MapKit ze SwiftUI - wyszukiwanie i otwieranie lokalizacji użytkownika w Mapach 
+
+https://youtu.be/F-H1CQAWQSU?si=DHLgD5gUPlhjMo5u
 
 
+
+To, co chcemy osiągnąć w tym filmie, to dodanie możliwości wyszukiwania do naszego widoku mapy podróży i wyświetlenie znacznika wyniku wyszukiwania lub jednego z moich znaczników miejsca docelowego w widoku szczegółowym, w którym będę miał również przycisk, który pozwoli mi otworzyć w oficjalnej aplikacji Apple Maps. Zanim jednak to zrobię, możesz zobaczyć, że jestem na ekranie widoku map podróży i wszystko wygląda dobrze. Ale jeśli przełączę się na kartę startową, podgląd ulega awarii. Aby to rozwiązać, musimy w makrze podglądu wstrzyknąć instancję menedżera lokalizacji do środowiska. Wróćmy teraz do widoku mapy podróży i zaimplementujmy wyszukiwanie w taki sam sposób, jak w widoku zakładek miejsc docelowych, gdzie mieliśmy mapę. Użyjemy tekstu wyszukiwania, stanu fokusu i zapytania z tego widoku. Przejdę więc do widoku mapy lokalizacji docelowej. Znajdę te trzy właściwości, które mamy tutaj, skopiuję je i wrócę do widoku mapy podróży i użyję ich tam. 
+
+
+
+Zacznę jednak od komentarza, abyśmy mogli jasno określić cel tych właściwości. Zauważ, że to zapytanie ustawia znaczniki miejsc wyszukiwania jako wszystkie te, które nie mają ustawionego miejsca docelowego. Nasza lista znaczników miejsc to wszystkie z nich, ale ponieważ ta mapa zmieni się wraz z lokalizacją użytkownika, zobaczymy tylko te, które znajdują się w obszarze jednego z naszych miejsc docelowych, jeśli jesteśmy w tym obszarze. Chcę mieć możliwość wybrania znacznika miejsca i wyświetlenia szczegółów, więc będę potrzebował tutaj również właściwości state dla wybranego znacznika miejsca. Będzie to opcjonalny pusty znacznik miejsca, który początkowo będzie zerowy. Następnie możemy dodać argument wyboru do naszej mapy, który jest powiązany z wybranym znacznikiem miejsca. Możemy użyć tej samej zawartości naszych innych map dla każdej grupy, aby wyświetlić znaczniki miejsc wyszukiwania jako domyślne czerwone znaczniki i te, które ustawiliśmy dla naszych miejsc docelowych, które mogą znajdować się w pobliżu miejsca, w którym się teraz znajdujemy, jako żółte znaczniki. Wróćmy więc do widoku innej mapy. Nie będziemy tutaj ustawiać żadnych ręcznych znaczników. W tym widoku będziemy jednak potrzebować tej grupy ze znacznikiem. Wrócę więc do widoku mapy podróży i zastąpię nim to, co mamy tutaj. Utwórzmy teraz pole tekstowe wyszukiwania i zrobię to w ten sam sposób, w jaki zrobiliśmy to na innej mapie i utworzę wstawkę bezpiecznego obszaru. Zrobię to po kontrolce map. Ponownie ustawię krawędź na dole. 
+
+
+
+W tym miejscu dodam VStack z pewnym wypełnieniem. Mogę teraz wrócić do innego widoku mapy i skopiować całe pole tekstowe z modyfikatorami i nakładką. Pozostawię teraz włączone przesyłanie, skopiuję je, wrócę i wkleję do mojego VStack. Zobaczysz, że mam to pole wyszukiwania. W przypadku funkcji przesyłania będziemy potrzebować widocznego regionu do przesłania do funkcji menedżera map, którą utworzyliśmy dla tego wyszukiwania w poprzednim filmie. Będziemy również potrzebować kontekstu modelu. Nie mamy żadnego z tych elementów ustawionych jako właściwości. Więc zróbmy to teraz. Najpierw możemy pobrać kontekst modelu ze środowiska. Następnie mogę utworzyć właściwość stanu. Będzie to opcjonalny region współrzędnych MK. Nazwę go widocznym regionem. Teraz za każdym razem, gdy zmienia się pozycja kamery widoku mapy, chcemy ustawić nowy widoczny region. Zrobimy to na samym początku, gdy wywołamy funkcję aktualizacji pozycji kamery. Na szczęście MapKit daje nam funkcję, która na to zwraca uwagę. Widzieliśmy to również w innym widoku. Jest to funkcja onMapCameraChange. Zapewnia nam ona kontekst. A kiedy już go mamy, możemy ustawić widoczny region na region kontekstu. Nie będziemy jednak ustawiać tutaj częstotliwości onEnd. Będziemy go stale aktualizować, jeśli jesteśmy w ruchu. Teraz mogę wrócić do innego widoku mapy i skopiować funkcję onSubmit i użyć jej tutaj. Nie możemy jednak ustawić tutaj automatycznej pozycji kamery, ponieważ uwzględniłoby to wszystkie znaczniki miejsc, które mamy we wszystkich lokalizacjach, a nie tylko wokół widocznego regionu. Więc usuńmy to. Teraz, jeśli podgląd zachowuje się prawidłowo jak mój, możesz przetestować tutaj, wyszukując. 
+
+
+
+Ale zanim to zrobisz, musisz określić kontener modelu dla podglądu. Użyjemy naszego docelowego kontenera podglądu. Teraz poszukajmy czegoś takiego jak stacje benzynowe. W moim przypadku widzę, że w pobliżu są cztery. Jeśli jednak oddalę widok, zobaczę ich znacznie więcej. Teraz nadal chcemy mieć możliwość wyczyszczenia tych znaczników i wyświetlenia informacji o wybranym z nich. Aby wyczyścić znaczniki, utworzę przycisk. W tym celu osadzę ten VStack wewnątrz HStack. Następnie po wypełnieniu utworzę kolejny VStack, ponieważ ostatecznie zamierzam umieścić tutaj całą masę elementów sterujących mapą zamiast w modyfikatorze elementów sterujących mapą. Ale o tym w następnym filmie. Wewnątrz VStack sprawdzimy, czy not_placemarks jest puste. Następnie mogę utworzyć przycisk, którego etykietą jest obraz przy użyciu nazwy systemowej map_pin_slash. Następnie dla akcji możemy użyć naszej usługi menedżera map, usunąć funkcję wyników wyszukiwania i mogę przekazać ten kontekst modelu. Ustawię styl przycisku na widoczne obramowanie, a odcień na czerwony. Teraz chcę, aby wszystkie przyciski w tym VStack były okrągłe. Zamierzam dodać trochę wypełnienia wokół VStack, ale chcę również upewnić się, że każdy przycisk wewnątrz tego VStack będzie miał okrągły kształt. Mogę więc zastosować okrągły kształt obramowania przycisku. Przetestuję to teraz w podglądzie podczas wyszukiwania. Po uzyskaniu kilku wyników pojawi się przycisk. Mogę dotknąć tego przycisku i usunąć wyniki wyszukiwania. Teraz wszystko, co muszę zrobić, to wyświetlić widok szczegółów lokalizacji po ustawieniu wybranego znacznika miejsca. 
+
+
+
+Dołączę więc arkusz do widoku mapy, który jest wyzwalany przez tę zmianę lub ten element. Zostanie więc powiązany z wybranym znacznikiem miejsca, a to zapewni nam wybrany znacznik miejsca. I nienawidzę tego, że nie dostaję końcowej składni zamknięcia, więc pozwól mi to wyczyścić, ponieważ nie potrzebujemy tej końcowej etykiety. Jeśli zastanawiasz się, co tutaj robię, obejrzyj mój film na ten temat, w którym przechodzę przez składnię końcowego zamknięcia i jej zrozumienie. Teraz możemy zaprezentować widok szczegółów lokalizacji, ale nie musimy podawać miejsca docelowego, ponieważ będzie ono po prostu zerowe. Ponieważ wybrany znacznik miejsca jest wymagany. Chcę jednak zastosować zatrzymanie prezentacji i w tej tablicy określę jedną, która jest wysokością i ustawię tę wysokość na 450, tak jak zrobiliśmy to w naszym innym widoku. Mogę to teraz przetestować, ponownie wyszukując stacje benzynowe. Teraz stuknij w jedną z nich, a pojawi się widok szczegółów lokalizacji. Jeśli stacja jest dostępna, zobaczymy jej podgląd. Ale pola tekstowe są puste, ponieważ cel podróży jest zerowy. Będziemy więc musieli dokonać pewnych zmian w tym widoku szczegółów lokalizacji, jeśli chcemy go tutaj użyć. Jeśli otworzysz teraz widok szczegółów lokalizacji, zobaczysz, że problem występuje w bloku onAppear. Tutaj wymagamy, aby miejsce docelowe nie było zerowe. Możemy więc wypełnić właściwości nazwy i adresu w naszych widokach tekstowych. Cóż, faktem jest, że nie chcemy mieć możliwości modyfikowania tych wartości, jeśli nie jesteśmy w miejscu docelowym, ponieważ nigdy nie będziemy dodawać ich do żadnej tablicy tutaj. Musimy więc wyświetlić widok tekstowy zamiast pól tekstowych. W VStack otocz zarówno pola tekstowe, jak i klauzulę ifChange instrukcją if, która sprawdzi, czy miejsce docelowe nie jest zerowe. Następnie można dodać klauzulę else i zamiast tego utworzyć dwa widoki tekstowe. Pierwszym z nich będzie wybrana nazwa znacznika miejsca, która jest opcjonalna. Tak więc nil coalesce będzie pustym ciągiem znaków. Ustawię czcionkę na title2. Następnie zastosuję wagę czcionki semi-bold. W przypadku drugiego pola tekstowego tekst będzie adresem wybranego znacznika miejsca, co również jest opcjonalne. Ponownie, również w tym przypadku zerujemy do pustego ciągu znaków. 
+
+
+
+Tym razem zastosuję czcionkę przypisu. Styl pierwszego planu będzie drugorzędny. Ale adres może być dość długi, więc ustawię limit linii na 2. A następnie zastosuję stały rozmiar, gdzie pozioma jest fałszywa, a pionowa chociaż jest prawdziwa, dzięki czemu zobaczę obie linie w zawinięciu. A następnie zastosuję końcowe wypełnienie. Możesz teraz powrócić do widoku mapy podróży i przeprowadzić kolejne wyszukiwanie. Teraz zobaczysz, że otrzymujemy widok ze szczegółami wyświetlanymi w widokach tekstowych, a nie w polach tekstowych. Kiedy jednak pojawi się ten widok, chcemy zrobić kilka innych rzeczy. Chcemy mieć możliwość otwarcia tej lokalizacji w aplikacji Mapy. I w końcu chcę być w stanie pokazać trasę bezpośrednio na naszej mapie. Cóż, będzie to możliwe tylko wtedy, gdy ten widok jest prezentowany, gdy przechodzimy z widoku mapy podróży, a nie z widoku mapy lokalizacji docelowej. Będziemy to wiedzieć w zależności od tego, czy istnieje właściwość miejsca docelowego, która nie jest zerowa. Tak więc w tym przypadku, gdy pochodzimy z widoku mapy podróży, w HStack, w którym prezentujemy nasze przyciski usuwania, nie będziemy ich wyświetlać w tym przypadku. Utworzymy klauzulę else. W ramach klauzuli else utworzę HStack. Dla pierwszego elementu w HStack utworzę przycisk używając tytułu string OpenInMaps. Następnie mogę użyć nowego typu przycisku w iOS 17, w którym mogę również określić obraz systemu dla etykiety. Użyję więc obrazu systemowego, który jest mapą. Dla akcji użyję if let, aby rozwinąć wybrany znacznik miejsca. Aby otworzyć mapę, musimy utworzyć element mapy. Najpierw będziemy potrzebować znacznika miejsca MK, który różni się od naszego znacznika miejsca MT. Można to zrobić po prostu określając współrzędną, która jest współrzędną naszego wybranego znacznika miejsca. Następnie możemy skonstruować nasz element mapy, który jest elementem mapy MK, na podstawie tego znacznika miejsca. 
+
+
+
+Chciałem to zrobić, ponieważ elementowi mapy można przypisać nazwę. Przypiszemy mu więc nazwę wybranego znacznika miejsca. Ale bardziej szczegółowo ma funkcję, która nazywa się OpenInMaps. W przypadku tego przycisku chcemy mieć pewność, że otrzymamy całą etykietę bez zawijania. Zamierzam więc zastosować tutaj kolejny modyfikator o stałym rozmiarze, w którym pozioma jest prawdziwa, a pionowa jest fałszywa. Teraz drugi przycisk utworzymy podobnie. Będzie to etykieta. Ta etykieta będzie wyświetlać root jako tekst. Obraz lub obraz systemowy, którego zamierzam użyć, to location.north. Zakodujemy tę akcję w kolejnym filmie. Ale upewnijmy się, że nie zawija się i ustawmy tutaj stały rozmiar poziomy true i pionowy false. Na koniec zamierzam zastosować styl przycisku do całego stosu h bordered. Być może zauważyłeś, że przez cały ten czas nasz podgląd się nie zmienił. A to dlatego, że w naszym makrze podglądu określiliśmy miejsce docelowe, pobierając je. Cóż, możemy nadać temu podglądowi nazwę, taką jak zakładka docelowa. Następnie możemy go zduplikować. Ale tym razem nazwiemy ją zakładką mapy podróży. Następnie możemy zmienić deskryptor pobierania, aby pobrać wszystkie puste znaczniki miejsc zamiast miejsca docelowego. A następnie możemy powiedzieć, że wszystkie znaczniki miejsc będą wynikiem próby użycia głównego kontekstu kontenerów do pobrania przy użyciu tego deskryptora pobierania. I wiemy, że mamy kilka w naszych danych mock. Mogę więc wybrać dowolny z nich, na przykład pierwszy z indeksem zero i przypisać go do właściwości o nazwie selected place mark. Następnie możemy zwrócić widok lokalizacji, ale nie potrzebujemy tego miejsca docelowego, ponieważ będzie ono zerowe. 
+
+
+
+A teraz, jeśli dotkniemy zakładki korzystania z mapy podróży, zobaczymy, że nasze pola tekstowe zostały zmienione na widoki tekstowe i mam do dyspozycji dwa przyciski. Aby wyświetlić funkcję otwartych map, musimy uruchomić symulator. A ponieważ ustawiłem moje lokalizacje tak, aby znajdowały się wokół jednego z miejsc docelowych, w których mam znaczniki miejsc, zobaczymy tam również te żółte znaczniki. Stuknę więc w jeden z nich. Co powiesz na dotknięcie Wieży Eiffla. Chcę zobaczyć, ile czasu mi to zajmie i jaką trasą można się tam dostać. Po dotknięciu pojawia się widok szczegółów i widzę te dwa przyciski. Nie mogę tutaj edytować nazwy. Stuknę więc w otwórz mapy, a otworzy się karta mapy. Jeśli otwierasz ją po raz pierwszy, możesz zostać poproszony o pozwolenie, ale gdy to zrobisz, zobaczysz mapę z wybranym znacznikiem. Następnie możesz dotknąć przycisku wskazówek na mapach. Zobaczę, ile czasu zajmie mi spacer. Stuknę w przycisk spaceru. To dość długi czas. A może sprawdzę czas dojazdu i wskazówki. To jest całkiem fajne. Ale teraz opuściliśmy naszą aplikację. Chcę być w stanie zapewnić wiele z tych funkcji bezpośrednio dostępnych w mojej aplikacji. Po prostu dotykając przycisku trasy, którego jeszcze nie zakodowaliśmy. To właśnie zrobimy w następnym filmie.
 
 ## MapKit z SwiftUI - trasy i wskazówki dojazdu
+
+https://youtu.be/yVMvOXGMd_Q?si=d-FGOooHLnm8mBHV
 
 
 

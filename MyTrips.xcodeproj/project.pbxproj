@@ -13,7 +13,6 @@
 		7632C99E2B5C296D00647B35 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7632C99D2B5C296D00647B35 /* MapManager.swift */; };
 		7632C9A12B5D27E900647B35 /* LocationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7632C9A02B5D27E800647B35 /* LocationDetailView.swift */; };
 		764D827F2B627DEB00FA0C57 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764D827E2B627DEB00FA0C57 /* LocationManager.swift */; };
-		764D82812B62A38000FA0C57 /* DestinationLocationsMapView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764D82802B62A38000FA0C57 /* DestinationLocationsMapView2.swift */; };
 		764D82832B62A62700FA0C57 /* LocationDeniedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764D82822B62A62700FA0C57 /* LocationDeniedView.swift */; };
 		764D82872B62AB1000FA0C57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 764D82862B62AB1000FA0C57 /* LaunchScreen.storyboard */; };
 		76D3A37D2B5952C500CBCAE7 /* MyTripsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D3A37C2B5952C500CBCAE7 /* MyTripsApp.swift */; };
@@ -33,7 +32,6 @@
 		7632C99D2B5C296D00647B35 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		7632C9A02B5D27E800647B35 /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
 		764D827E2B627DEB00FA0C57 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		764D82802B62A38000FA0C57 /* DestinationLocationsMapView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationLocationsMapView2.swift; sourceTree = "<group>"; };
 		764D82822B62A62700FA0C57 /* LocationDeniedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDeniedView.swift; sourceTree = "<group>"; };
 		764D82862B62AB1000FA0C57 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		76D3A3792B5952C500CBCAE7 /* MyTrips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTrips.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,7 +141,6 @@
 			children = (
 				76D3A38F2B59544500CBCAE7 /* DestinationLocationsMapView.swift */,
 				7632C99A2B5BDD4500647B35 /* DestinationsListView.swift */,
-				764D82802B62A38000FA0C57 /* DestinationLocationsMapView2.swift */,
 			);
 			path = DestinationsTab;
 			sourceTree = "<group>";
@@ -222,7 +219,6 @@
 				76D3A3902B59544500CBCAE7 /* DestinationLocationsMapView.swift in Sources */,
 				76D3A3942B597E3900CBCAE7 /* SampleWarsawLocations.swift in Sources */,
 				7632C9A12B5D27E900647B35 /* LocationDetailView.swift in Sources */,
-				764D82812B62A38000FA0C57 /* DestinationLocationsMapView2.swift in Sources */,
 				764D82832B62A62700FA0C57 /* LocationDeniedView.swift in Sources */,
 				76D3A38E2B5953D700CBCAE7 /* TripMapView.swift in Sources */,
 				76D3A38C2B5952E500CBCAE7 /* StartTab.swift in Sources */,
